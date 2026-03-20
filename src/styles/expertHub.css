@@ -1,0 +1,166 @@
+/* Expert Hub Custom Animations */
+
+@keyframes shimmerPulse {
+  0%, 100% {
+    box-shadow: 0 0 15px 3px rgba(220, 38, 38, 0.7), 0 0 40px 10px rgba(220, 38, 38, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 30px 10px rgba(220, 38, 38, 1), 0 0 70px 25px rgba(220, 38, 38, 0.5);
+  }
+}
+
+@keyframes shimmerSlide {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+@keyframes floatY {
+  0%, 100% { transform: translateY(0px) rotate(-2deg); }
+  50% { transform: translateY(-24px) rotate(2deg); }
+}
+
+@keyframes marqueeLeft {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+@keyframes marqueeRight {
+  from { transform: translateX(-50%); }
+  to { transform: translateX(0); }
+}
+
+@keyframes heroGrid {
+  0% { background-position: 0 0; }
+  100% { background-position: 60px 60px; }
+}
+
+@keyframes redOrb {
+  0%, 100% { opacity: 0.08; transform: scale(1); }
+  50% { opacity: 0.18; transform: scale(1.15); }
+}
+
+@keyframes scanLine {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(100vh); }
+}
+
+@keyframes hexPulse {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 1; }
+}
+
+@keyframes borderGlow {
+  0%, 100% { border-color: rgba(220, 38, 38, 0.4); }
+  50% { border-color: rgba(220, 38, 38, 0.9); }
+}
+
+@keyframes numberCount {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulseRed {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(220, 38, 38, 0.4); }
+  50% { box-shadow: 0 0 0 8px rgba(220, 38, 38, 0); }
+}
+
+.cta-shimmer {
+  animation: shimmerPulse 2.5s ease-in-out infinite;
+  background: linear-gradient(135deg, #dc2626 0%, #ef4444 50%, #dc2626 100%);
+  background-size: 200% auto;
+}
+
+.cta-shimmer:hover {
+  animation: shimmerPulse 1.2s ease-in-out infinite;
+}
+
+.cta-shimmer-text {
+  background: linear-gradient(90deg, #fff 0%, #fca5a5 30%, #fff 60%, #fca5a5 90%, #fff 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shimmerSlide 3s linear infinite;
+}
+
+.marquee-left {
+  animation: marqueeLeft 35s linear infinite;
+  will-change: transform;
+}
+
+.marquee-right {
+  animation: marqueeRight 40s linear infinite;
+  will-change: transform;
+}
+
+.marquee-left:hover,
+.marquee-right:hover {
+  animation-play-state: paused;
+}
+
+.float-laptop {
+  animation: floatY 5s ease-in-out infinite;
+}
+
+.hero-grid {
+  background-image: 
+    linear-gradient(rgba(220, 38, 38, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(220, 38, 38, 0.06) 1px, transparent 1px);
+  background-size: 60px 60px;
+  animation: heroGrid 8s linear infinite;
+}
+
+.red-orb-1 {
+  animation: redOrb 6s ease-in-out infinite;
+}
+
+.red-orb-2 {
+  animation: redOrb 8s ease-in-out infinite 2s;
+}
+
+.hex-clip {
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+}
+
+.hex-border-glow {
+  animation: borderGlow 2s ease-in-out infinite;
+}
+
+.glassmorphism {
+  background: rgba(10, 10, 10, 0.6);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(220, 38, 38, 0.15);
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.red-line-left {
+  background: linear-gradient(90deg, #dc2626, transparent);
+}
+
+.red-line-right {
+  background: linear-gradient(270deg, #dc2626, transparent);
+}
+
+/* Scan line effect for hero */
+.scan-line {
+  animation: scanLine 6s ease-in-out infinite;
+  opacity: 0.03;
+}
+
+/* Smooth scroll for the whole page */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Remove button outlines */
+button:focus-visible {
+  outline: 2px solid rgba(220, 38, 38, 0.5);
+  outline-offset: 2px;
+}
