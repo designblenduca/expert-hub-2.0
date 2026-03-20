@@ -58,7 +58,7 @@ export default function Links() {
                 <span className="sr-only">Instagram</span>
                 <Instagram size={18} />
               </a>
-              <a href="#" className="w-10 h-10 rounded-full bg-zinc-900 border border-zinc-800 flex items-center justify-center hover:bg-zinc-800 transition-colors cursor-pointer text-zinc-400 hover:text-white">
+              <a href="https://www.linkedin.com/company/blenduca?originalSubdomain=br" className="w-10 h-10 rounded-full bg-zinc-900 border border-zinc-800 flex items-center justify-center hover:bg-zinc-800 transition-colors cursor-pointer text-zinc-400 hover:text-white">
                 <span className="sr-only">LinkedIn</span>
                 <Linkedin size={18} />
               </a>
