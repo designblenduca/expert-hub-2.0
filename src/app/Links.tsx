@@ -32,6 +32,10 @@ export default function Links() {
               <img src="/images/links/Link 5.png" alt="A Nova Era do Mercado Digital" className="w-full h-auto object-cover block" />
             </a>
 
+            <a href="https://imersao-ai-first.blenduca.com.br/" className="w-full transform transition-all hover:scale-[1.02] focus:scale-[1.02] outline-none rounded-[16px] overflow-hidden shadow-2xl hover:shadow-[0_0_30px_rgba(220,38,38,0.2)]">
+              <img src="/images/links/Link 9.png" alt="Imersão AI-First para Mentores" className="w-full h-auto object-cover block" />
+            </a>
+
             <a href="https://planoexpert.blenduca.com.br/" className="w-full transform transition-all hover:scale-[1.02] focus:scale-[1.02] outline-none rounded-[16px] overflow-hidden shadow-2xl hover:shadow-[0_0_30px_rgba(220,38,38,0.2)]">
               <img src="/images/links/Link 6.png" alt="Próximo Passo" className="w-full h-auto object-cover block" />
             </a>
