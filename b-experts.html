@@ -1,0 +1,983 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>B'EXPERTS — Programas de Aceleração | Expert Hub by Blenduca</title>
+  <meta name="description" content="Programas completos de consultoria e mentoria para transformar seu conhecimento em um negócio escalável. 7 eixos de entrega, 4 níveis de programa." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: { inter: ['Inter', 'sans-serif'] },
+          colors: {
+            primary: { DEFAULT: '#C22235', dark: '#a11c2c', light: '#d63346' },
+            red: {
+              300: '#e05969', 400: '#d13c4e', 500: '#C22235', 600: '#a31c2d', 700: '#851724'
+            },
+            'bg-dark': '#0a0a0a',
+            surface: '#141414',
+            'card-dark': '#1a1a1a',
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; background: #0a0a0a; color: #fff; overflow-x: hidden; }
+    ::selection { background: #C22235; color: #fff; }
+    .glass-nav { background: rgba(10,10,10,0.7); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255,255,255,0.05); }
+    .glow-primary { box-shadow: 0 0 30px rgba(194,34,53,0.5); }
+    .text-gradient-hero { background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-image: linear-gradient(to right, #C22235, #e05969); }
+    .card-hover { transition: all 0.3s ease; }
+    .card-hover:hover { transform: translateY(-2px); border-color: rgba(194,34,53,0.5); box-shadow: 0 10px 40px rgba(194,34,53,0.15); }
+    @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+    .animate-float { animation: float 4s ease-in-out infinite; }
+    @keyframes float-delayed { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
+    .animate-float-delayed { animation: float-delayed 5s ease-in-out infinite; animation-delay: 1.5s; }
+    .grid-pattern { background-image: linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px); background-size: 40px 40px; }
+    .mobile-menu { transform: translateX(100%); transition: transform 0.3s ease; }
+    .mobile-menu.open { transform: translateX(0); }
+    .eixo-content { transition: max-height 0.4s ease; overflow: hidden; }
+    .faq-content { transition: max-height 0.4s ease; overflow: hidden; }
+  </style>
+</head>
+<body class="font-inter antialiased">
+
+  <!-- ═══════════════ FOLD 0: NAVBAR ═══════════════ -->
+  <nav class="glass-nav fixed top-0 left-0 w-full z-50 h-20 flex items-center">
+    <div class="max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 flex items-center justify-between">
+      <div class="flex items-center gap-4">
+        <a href="/" class="flex items-center gap-2">
+          <img src="/images/b-expert-logo.svg" alt="B'Expert Logo" class="h-8" />
+        </a>
+      </div>
+      <div class="hidden lg:flex items-center gap-8">
+        <a href="/" class="text-sm text-gray-400 hover:text-white transition-colors flex items-center gap-1">
+          <span class="material-icons text-xs">arrow_back</span>
+          Voltar ao Hub
+        </a>
+        <a href="#entregaveis" class="text-sm text-gray-300 hover:text-white transition-colors">Entregáveis</a>
+        <a href="#niveis" class="text-sm text-gray-300 hover:text-white transition-colors">Níveis</a>
+        <a href="#cases-experts" class="text-sm text-gray-300 hover:text-white transition-colors">Cases</a>
+        <a href="#faq" class="text-sm text-gray-300 hover:text-white transition-colors">FAQ</a>
+        <a href="https://planoexpert.blenduca.com.br/" class="bg-primary hover:bg-primary-dark text-white font-bold text-sm py-2.5 px-6 rounded-lg shadow-[0_0_20px_-5px_rgba(194,34,53,0.4)] transition-all">
+          QUERO MEU PLANO →
+        </a>
+      </div>
+      <button id="menuBtn" class="lg:hidden text-white" aria-label="Abrir menu">
+        <span class="material-icons text-3xl">menu</span>
+      </button>
+    </div>
+    <div id="mobileMenu" class="mobile-menu fixed top-0 right-0 w-72 h-full bg-bg-dark/95 backdrop-blur-xl z-50 p-8 flex flex-col gap-6 border-l border-white/5">
+      <button id="closeMenuBtn" class="self-end text-white mb-4" aria-label="Fechar menu">
+        <span class="material-icons text-3xl">close</span>
+      </button>
+      <a href="/" class="text-gray-400 hover:text-white transition-colors text-lg flex items-center gap-2" onclick="closeMobile()">
+        <span class="material-icons text-sm">arrow_back</span> Voltar ao Hub
+      </a>
+      <a href="#entregaveis" class="text-gray-300 hover:text-white transition-colors text-lg" onclick="closeMobile()">Entregáveis</a>
+      <a href="#niveis" class="text-gray-300 hover:text-white transition-colors text-lg" onclick="closeMobile()">Níveis</a>
+      <a href="#cases-experts" class="text-gray-300 hover:text-white transition-colors text-lg" onclick="closeMobile()">Cases</a>
+      <a href="#faq" class="text-gray-300 hover:text-white transition-colors text-lg" onclick="closeMobile()">FAQ</a>
+      <a href="https://planoexpert.blenduca.com.br/" class="mt-4 px-5 py-3 rounded-lg bg-primary text-white text-sm font-bold text-center" onclick="closeMobile()">QUERO MEU PLANO →</a>
+    </div>
+  </nav>
+
+  <!-- ═══════════════ FOLD 1: HERO ═══════════════ -->
+  <section class="relative min-h-screen pt-24 pb-20 flex items-center overflow-hidden">
+    <div class="absolute top-0 right-0 w-[600px] h-[600px] bg-primary/10 rounded-full blur-[150px] pointer-events-none"></div>
+    <div class="absolute bottom-0 left-0 w-[400px] h-[400px] bg-primary/5 rounded-full blur-[120px] pointer-events-none"></div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+      <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+        <!-- Left -->
+        <div class="z-10">
+          <span class="inline-block text-primary font-bold text-xs uppercase tracking-[0.2em] border border-primary/30 bg-primary/10 px-3 py-1 rounded-full mb-6">Programas de Aceleração</span>
+          <h1 class="text-4xl md:text-5xl lg:text-7xl font-black leading-[1.05] tracking-tight mb-6">
+            Transforme Sua Expertise em um Negócio que <span class="text-gradient-hero">Escala sem Você.</span>
+          </h1>
+          <p class="text-lg md:text-xl text-gray-400 font-light leading-relaxed mb-8 max-w-xl">
+            Programas completos de consultoria, mentoria e implementação para experts que faturam de R$10k a R$1M+/mês e querem construir um modelo de negócio recorrente, previsível e escalável.
+          </p>
+          <div class="flex flex-col sm:flex-row gap-4 mb-10">
+            <a href="https://planoexpert.blenduca.com.br/" class="inline-flex items-center justify-center gap-2 px-8 py-4 bg-gradient-to-r from-primary to-primary-dark rounded-xl text-white font-semibold text-sm uppercase tracking-wider glow-primary hover:scale-[1.02] transition-transform duration-300">
+              Receber Meu Plano Personalizado <span class="material-icons text-lg">arrow_forward</span>
+            </a>
+            <a href="#entregaveis" class="inline-flex items-center justify-center gap-2 px-6 py-4 text-gray-400 hover:text-white transition-colors duration-300">
+              <span class="material-icons text-lg">expand_more</span>
+              <span class="text-sm font-medium">Ver o que está incluído</span>
+            </a>
+          </div>
+          <!-- Prova social -->
+          <div class="flex flex-wrap gap-x-6 gap-y-2 text-sm text-gray-500">
+            <span class="flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-primary"></span><span class="text-white font-bold">+200</span> experts acelerados</span>
+            <span class="flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-primary"></span><span class="text-white font-bold">4</span> níveis de programa</span>
+            <span class="flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-primary"></span><span class="text-white font-bold">7</span> eixos de entrega</span>
+            <span class="flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-primary"></span>Acompanhamento <span class="text-white font-bold">semanal</span></span>
+          </div>
+        </div>
+        <!-- Right: Floating Cards -->
+        <div class="relative h-[400px] lg:h-[500px] hidden md:block">
+          <!-- Card fundo -->
+          <div class="absolute top-8 left-8 w-[260px] bg-[#111] border border-white/5 rounded-xl p-5 shadow-xl opacity-50 blur-[1px] rotate-[-3deg] z-10">
+            <div class="flex items-center gap-2 mb-3">
+              <span class="material-icons text-primary text-sm">event_repeat</span>
+              <span class="text-white font-bold text-sm">Encontro Tático</span>
+            </div>
+            <p class="text-gray-500 text-xs">Semanal · Terças 19:30h</p>
+            <p class="text-gray-600 text-xs mt-2">Implementação ao vivo com foco em execução</p>
+          </div>
+          <!-- Card meio -->
+          <div class="absolute top-24 left-20 w-[270px] bg-[#111] border border-white/[0.08] rounded-xl p-5 shadow-xl opacity-80 rotate-[1deg] z-20 animate-float-delayed">
+            <div class="flex items-center gap-2 mb-3">
+              <span class="material-icons text-primary text-sm">map</span>
+              <span class="text-white font-bold text-sm">Mapa B'Expert</span>
+            </div>
+            <p class="text-gray-500 text-xs">Sprint de 4 semanas</p>
+            <p class="text-gray-600 text-xs mt-2">Estruture seu modelo de negócio do zero</p>
+            <div class="mt-3 flex gap-2">
+              <span class="text-[9px] bg-primary/10 text-primary px-2 py-0.5 rounded font-bold uppercase">Todos os níveis</span>
+            </div>
+          </div>
+          <!-- Card frente (destaque) -->
+          <div class="absolute top-40 left-12 w-[290px] bg-[#0e0e0e] border-2 border-primary/40 rounded-xl p-6 shadow-2xl rotate-[2deg] z-30 animate-float" style="box-shadow: 0 20px 60px rgba(194,34,53,0.15);">
+            <div class="flex items-center gap-2 mb-3">
+              <span class="material-icons text-primary">calendar_month</span>
+              <span class="text-white font-bold">Expert Planning Anual</span>
+            </div>
+            <p class="text-gray-400 text-xs mb-3">Sessão estratégica anual completa</p>
+            <div class="space-y-1.5">
+              <div class="flex items-center gap-2"><span class="material-icons text-primary text-xs">check</span><span class="text-gray-300 text-xs">Posicionamento</span></div>
+              <div class="flex items-center gap-2"><span class="material-icons text-primary text-xs">check</span><span class="text-gray-300 text-xs">Modelo de Receita</span></div>
+              <div class="flex items-center gap-2"><span class="material-icons text-primary text-xs">check</span><span class="text-gray-300 text-xs">Roadmap 12 meses</span></div>
+            </div>
+            <div class="mt-4">
+              <span class="text-[9px] bg-primary/10 text-primary px-2 py-0.5 rounded font-bold uppercase">1x/ano · Todos os níveis</span>
+            </div>
+          </div>
+          <!-- Card extra decorativo -->
+          <div class="absolute bottom-12 right-8 w-[200px] bg-[#111] border border-white/5 rounded-xl p-4 shadow-lg opacity-40 rotate-[-2deg] z-10">
+            <div class="flex items-center gap-2 mb-2">
+              <span class="material-icons text-primary text-sm">smart_toy</span>
+              <span class="text-white font-bold text-xs">B'Mentor IA 24/7</span>
+            </div>
+            <p class="text-gray-600 text-[10px]">Assistente treinado com a metodologia Expert Hub</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ FOLD 2: TRANSFORMAÇÃO ═══════════════ -->
+  <section id="transformacao" class="relative py-24 lg:py-32 overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-b from-primary-dark/30 via-[#1a0810] to-bg-dark"></div>
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <span class="inline-block text-primary font-semibold tracking-[0.2em] uppercase text-xs mb-3 border border-primary/30 bg-primary/10 px-3 py-1 rounded-full">A Transformação</span>
+        <h2 class="text-3xl md:text-5xl lg:text-6xl font-extrabold text-white tracking-tight mb-4">
+          De Expert Sobrecarregado a<br/>Negócio <span class="text-gradient-hero">Escalável</span>.
+        </h2>
+      </div>
+      <div class="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto mb-12">
+        <!-- SEM -->
+        <div class="bg-black/40 rounded-2xl border border-white/5 p-8">
+          <h3 class="text-lg font-bold text-white mb-6 flex items-center gap-2">
+            <span class="material-icons text-gray-500">block</span> SEM o B'Experts
+          </h3>
+          <ul class="space-y-4">
+            <li class="flex items-start gap-3"><span class="material-icons text-red-500/70 text-sm mt-0.5">close</span><span class="text-gray-300 font-light">Agenda lotada com sessões 1:1 — sem tempo livre</span></li>
+            <li class="flex items-start gap-3"><span class="material-icons text-red-500/70 text-sm mt-0.5">close</span><span class="text-gray-300 font-light">Receita imprevisível que depende do seu mês</span></li>
+            <li class="flex items-start gap-3"><span class="material-icons text-red-500/70 text-sm mt-0.5">close</span><span class="text-gray-300 font-light">Sem comunidade — crescendo sozinho e isolado</span></li>
+            <li class="flex items-start gap-3"><span class="material-icons text-red-500/70 text-sm mt-0.5">close</span><span class="text-gray-300 font-light">Tecnologia dispersa — 15 ferramentas que não conversam</span></li>
+            <li class="flex items-start gap-3"><span class="material-icons text-red-500/70 text-sm mt-0.5">close</span><span class="text-gray-300 font-light">Sem método — reinventando a roda a cada cliente</span></li>
+          </ul>
+        </div>
+        <!-- COM -->
+        <div class="relative bg-gradient-to-br from-card-dark to-surface rounded-2xl border border-primary/50 p-8 overflow-hidden" style="box-shadow: 0 0 30px rgba(194,34,53,0.15);">
+          <span class="material-icons absolute bottom-4 right-4 text-7xl text-primary/5">rocket_launch</span>
+          <h3 class="text-lg font-bold text-white mb-6 flex items-center gap-2">
+            <span class="material-icons text-primary">rocket_launch</span> COM o B'Experts
+          </h3>
+          <ul class="space-y-4">
+            <li class="flex items-start gap-3"><span class="material-icons text-green-400 text-sm mt-0.5">check_circle</span><span class="text-gray-200 font-light">Modelo de mentoria em grupo que escala sem você</span></li>
+            <li class="flex items-start gap-3"><span class="material-icons text-green-400 text-sm mt-0.5">check_circle</span><span class="text-gray-200 font-light">Receita recorrente e previsível mês após mês</span></li>
+            <li class="flex items-start gap-3"><span class="material-icons text-green-400 text-sm mt-0.5">check_circle</span><span class="text-gray-200 font-light">Comunidade de alto nível com parcerias estratégicas</span></li>
+            <li class="flex items-start gap-3"><span class="material-icons text-green-400 text-sm mt-0.5">check_circle</span><span class="text-gray-200 font-light">Ecossistema tecnológico integrado e automatizado</span></li>
+            <li class="flex items-start gap-3"><span class="material-icons text-green-400 text-sm mt-0.5">check_circle</span><span class="text-gray-200 font-light">Método validado com roadmap claro de 12 meses</span></li>
+          </ul>
+        </div>
+      </div>
+      <p class="text-center text-gray-400 font-light max-w-2xl mx-auto">
+        Tudo isso é entregue através de <span class="text-white font-semibold">7 eixos de implementação</span> que cobrem cada dimensão do seu negócio.
+      </p>
+    </div>
+  </section>
+
+  <!-- ═══════════════ FOLD 3: 7 EIXOS DE ENTREGA ═══════════════ -->
+  <section id="entregaveis" class="relative py-24 lg:py-32 bg-bg-dark overflow-hidden">
+    <div class="absolute inset-0 grid-pattern opacity-5 pointer-events-none"></div>
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="text-center mb-16">
+        <span class="inline-block text-primary font-semibold tracking-[0.2em] uppercase text-xs mb-3 border border-primary/30 bg-primary/10 px-3 py-1 rounded-full">O que Você Recebe</span>
+        <h2 class="text-4xl md:text-5xl font-extrabold text-white mb-4 tracking-tight">7 Eixos. Uma Transformação Completa.</h2>
+        <p class="text-gray-400 max-w-2xl mx-auto text-lg">Cada pilar do modelo EXPERT se traduz em entregáveis concretos no seu programa. Veja o que está incluído em todos os níveis.</p>
+      </div>
+
+      <div id="eixosAccordion" class="space-y-3">
+
+        <!-- EIXO 1: IMPLEMENTAÇÃO (aberto) -->
+        <div class="eixo-item border border-white/[0.06] rounded-xl overflow-hidden bg-[#0e0e0e] hover:border-primary/20 transition-colors">
+          <button class="eixo-trigger w-full flex items-center justify-between p-6 text-left group" onclick="toggleEixo(this)">
+            <div class="flex items-center gap-4">
+              <div class="w-12 h-12 rounded-xl bg-primary/15 flex items-center justify-center flex-shrink-0"><span class="material-icons text-primary text-xl">rocket_launch</span></div>
+              <div><h3 class="text-lg md:text-xl font-bold text-white group-hover:text-primary transition-colors">IMPLEMENTAÇÃO</h3><p class="text-gray-500 text-sm">Onboarding &amp; Ativação do Método</p></div>
+            </div>
+            <div class="flex items-center gap-3">
+              <span class="text-[10px] uppercase tracking-wider text-gray-600 font-medium hidden md:block">3 entregáveis</span>
+              <span class="material-icons text-gray-500 eixo-chevron transition-transform duration-300 rotate-180">expand_more</span>
+            </div>
+          </button>
+          <div class="eixo-content px-6 pb-6" style="max-height: 600px;">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 pt-2">
+              <div class="bg-white/[0.02] border border-white/5 rounded-xl p-5 hover:border-primary/20 transition-colors">
+                <div class="flex items-center gap-2 mb-3"><span class="material-icons text-primary text-sm">map</span><span class="text-white font-bold text-sm">Mapa B'Expert</span></div>
+                <p class="text-gray-400 text-xs leading-relaxed mb-3">Sprint de 4 semanas para estruturar seu modelo de negócio de conhecimento do zero.</p>
+                <span class="inline-block text-[9px] uppercase tracking-wider text-primary/70 bg-primary/10 px-2 py-0.5 rounded font-bold">Todos os níveis</span>
+              </div>
+              <div class="bg-white/[0.02] border border-white/5 rounded-xl p-5 hover:border-primary/20 transition-colors">
+                <div class="flex items-center gap-2 mb-3"><span class="material-icons text-primary text-sm">person_add</span><span class="text-white font-bold text-sm">Onboarding Individual</span></div>
+                <p class="text-gray-400 text-xs leading-relaxed mb-3">Sessão de boas-vindas com diagnóstico inicial e plano de ação personalizado.</p>
+                <span class="inline-block text-[9px] uppercase tracking-wider text-primary/70 bg-primary/10 px-2 py-0.5 rounded font-bold">Todos os níveis</span>
+              </div>
+              <div class="bg-white/[0.02] border border-white/5 rounded-xl p-5 hover:border-primary/20 transition-colors">
+                <div class="flex items-center gap-2 mb-3"><span class="material-icons text-primary text-sm">event_repeat</span><span class="text-white font-bold text-sm">Encontros de Implementação</span></div>
+                <p class="text-gray-400 text-xs leading-relaxed mb-3">Acompanhamento quinzenal para garantir execução do roadmap.</p>
+                <span class="inline-block text-[9px] uppercase tracking-wider text-gray-500 bg-white/5 px-2 py-0.5 rounded font-bold">Frequência por nível</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- EIXO 2: ESTRATÉGIA -->
+        <div class="eixo-item border border-white/[0.06] rounded-xl overflow-hidden bg-[#0e0e0e] hover:border-primary/20 transition-colors">
+          <button class="eixo-trigger w-full flex items-center justify-between p-6 text-left group" onclick="toggleEixo(this)">
+            <div class="flex items-center gap-4">
+              <div class="w-12 h-12 rounded-xl bg-primary/15 flex items-center justify-center flex-shrink-0"><span class="material-icons text-primary text-xl">insights</span></div>
+              <div><h3 class="text-lg md:text-xl font-bold text-white group-hover:text-primary transition-colors">ESTRATÉGIA</h3><p class="text-gray-500 text-sm">Consultoria &amp; Orientação Individual</p></div>
+            </div>
+            <div class="flex items-center gap-3">
+              <span class="text-[10px] uppercase tracking-wider text-gray-600 font-medium hidden md:block">2 entregáveis</span>
+              <span class="material-icons text-gray-500 eixo-chevron transition-transform duration-300">expand_more</span>
+            </div>
+          </button>
+          <div class="eixo-content px-6 pb-6" style="max-height: 0;">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2">
+              <div class="bg-white/[0.02] border border-white/5 rounded-xl p-5 hover:border-primary/20 transition-colors">
+                <div class="flex items-center gap-2 mb-3"><span class="material-icons text-primary text-sm">calendar_month</span><span class="text-white font-bold text-sm">Expert Planning Anual</span></div>
+                <p class="text-gray-400 text-xs leading-relaxed mb-3">Sessão anual de planejamento estratégico: posicionamento, precificação, modelo de receita e roadmap de 12 meses.</p>
+                <span class="inline-block text-[9px] uppercase tracking-wider text-primary/70 bg-primary/10 px-2 py-0.5 rounded font-bold">1x/ano · Todos os níveis</span>
+              </div>
+              <div class="bg-white/[0.02] border border-white/5 rounded-xl p-5 hover:border-primary/20 transition-colors">
+                <div class="flex items-center gap-2 mb-3"><span class="material-icons text-primary text-sm">supervisor_account</span><span class="text-white font-bold text-sm">Mentorias Individuais</span></div>
+                <p class="text-gray-400 text-xs leading-relaxed mb-3">Encontros 1:1 com consultores seniores para destravar gargalos estratégicos do seu negócio.</p>
+                <span class="inline-block text-[9px] uppercase tracking-wider text-gray-500 bg-white/5 px-2 py-0.5 rounded font-bold">Trimestral → Mensal (por nível)</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- EIXO 3: CONEXÕES -->
+        <div class="eixo-item border border-white/[0.06] rounded-xl overflow-hidden bg-[#0e0e0e] hover:border-primary/20 transition-colors">
+          <button class="eixo-trigger w-full flex items-center justify-between p-6 text-left group" onclick="toggleEixo(this)">
+            <div class="flex items-center gap-4">
+              <div class="w-12 h-12 rounded-xl bg-primary/15 flex items-center justify-center flex-shrink-0"><span class="material-icons text-primary text-xl">diversity_3</span></div>
+              <div><h3 class="text-lg md:text-xl font-bold text-white group-hover:text-primary transition-colors">CONEXÕES</h3><p class="text-gray-500 text-sm">Comunidade &amp; Networking Estratégico</p></div>
+            </div>
+            <div class="flex items-center gap-3">
+              <span class="text-[10px] uppercase tracking-wider text-gray-600 font-medium hidden md:block">2 entregáveis</span>
+              <span class="material-icons text-gray-500 eixo-chevron transition-transform duration-300">expand_more</span>
+            </div>
+          </button>
+          <div class="eixo-content px-6 pb-6" style="max-height: 0;">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2">
+              <div class="bg-white/[0.02] border border-white/5 rounded-xl p-5 hover:border-primary/20 transition-colors">
+                <div class="flex items-center gap-2 mb-3"><span class="material-icons text-primary text-sm">groups</span><span class="text-white font-bold text-sm">Comunidade B'Experts</span></div>
+                <p class="text-gray-400 text-xs leading-relaxed mb-3">Acesso ao grupo exclusivo de experts com networking estratégico, fórum e interação contínua.</p>
+                <span class="inline-block text-[9px] uppercase tracking-wider text-primary/70 bg-primary/10 px-2 py-0.5 rounded font-bold">Todos os níveis</span>
+              </div>
+              <div class="bg-white/[0.02] border border-white/5 rounded-xl p-5 hover:border-primary/20 transition-colors">
+                <div class="flex items-center gap-2 mb-3"><span class="material-icons text-primary text-sm">celebration</span><span class="text-white font-bold text-sm">Imersões Presenciais</span></div>
+                <p class="text-gray-400 text-xs leading-relaxed mb-3">Eventos presenciais de imersão (Expert Experience) com palestras, workshops e networking de alto nível.</p>
+                <span class="inline-block text-[9px] uppercase tracking-wider text-gray-500 bg-white/5 px-2 py-0.5 rounded font-bold">2 a ilimitado (por nível)</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- EIXO 4: PERFORMANCE -->
+        <div class="eixo-item border border-white/[0.06] rounded-xl overflow-hidden bg-[#0e0e0e] hover:border-primary/20 transition-colors">
+          <button class="eixo-trigger w-full flex items-center justify-between p-6 text-left group" onclick="toggleEixo(this)">
+            <div class="flex items-center gap-4">
+              <div class="w-12 h-12 rounded-xl bg-primary/15 flex items-center justify-center flex-shrink-0"><span class="material-icons text-primary text-xl">trending_up</span></div>
+              <div><h3 class="text-lg md:text-xl font-bold text-white group-hover:text-primary transition-colors">PERFORMANCE</h3><p class="text-gray-500 text-sm">Orientação em Grupo &amp; Suporte Contínuo</p></div>
+            </div>
+            <div class="flex items-center gap-3">
+              <span class="text-[10px] uppercase tracking-wider text-gray-600 font-medium hidden md:block">5 entregáveis</span>
+              <span class="material-icons text-gray-500 eixo-chevron transition-transform duration-300">expand_more</span>
+            </div>
+          </button>
+          <div class="eixo-content px-6 pb-6" style="max-height: 0;">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 pt-2">
+              <div class="bg-white/[0.02] border border-white/5 rounded-xl p-5 hover:border-primary/20 transition-colors">
+                <div class="flex items-center gap-2 mb-3"><span class="material-icons text-primary text-sm">event</span><span class="text-white font-bold text-sm">Encontro Tático Semanal</span></div>
+                <p class="text-gray-400 text-xs leading-relaxed mb-3">Sessão de implementação ao vivo toda terça-feira (19:30h) — temas rotativos com foco em execução.</p>
+                <span class="inline-block text-[9px] uppercase tracking-wider text-primary/70 bg-primary/10 px-2 py-0.5 rounded font-bold">Todos os níveis</span>
+              </div>
+              <div class="bg-white/[0.02] border border-white/5 rounded-xl p-5 hover:border-primary/20 transition-colors">
+                <div class="flex items-center gap-2 mb-3"><span class="material-icons text-primary text-sm">help_center</span><span class="text-white font-bold text-sm">Plantão Tira-Dúvidas</span></div>
+                <p class="text-gray-400 text-xs leading-relaxed mb-3">Sessão aberta ao vivo toda quinta-feira (16h) para resolver bloqueios em tempo real.</p>
+                <span class="inline-block text-[9px] uppercase tracking-wider text-primary/70 bg-primary/10 px-2 py-0.5 rounded font-bold">Todos os níveis</span>
+              </div>
+              <div class="bg-white/[0.02] border border-white/5 rounded-xl p-5 hover:border-primary/20 transition-colors">
+                <div class="flex items-center gap-2 mb-3"><span class="material-icons text-primary text-sm">smart_toy</span><span class="text-white font-bold text-sm">B'Mentor (IA 24/7)</span></div>
+                <p class="text-gray-400 text-xs leading-relaxed mb-3">Assistente de IA treinado com a metodologia Expert Hub — disponível 24h para suporte e orientação.</p>
+                <span class="inline-block text-[9px] uppercase tracking-wider text-primary/70 bg-primary/10 px-2 py-0.5 rounded font-bold">Todos os níveis</span>
+              </div>
+              <div class="bg-white/[0.02] border border-white/5 rounded-xl p-5 hover:border-primary/20 transition-colors">
+                <div class="flex items-center gap-2 mb-3"><span class="material-icons text-primary text-sm">build</span><span class="text-white font-bold text-sm">Central de Ferramentas</span></div>
+                <p class="text-gray-400 text-xs leading-relaxed mb-3">Biblioteca curada de ferramentas, templates e recursos para implementação imediata.</p>
+                <span class="inline-block text-[9px] uppercase tracking-wider text-primary/70 bg-primary/10 px-2 py-0.5 rounded font-bold">Todos os níveis</span>
+              </div>
+              <div class="bg-white/[0.02] border border-white/5 rounded-xl p-5 hover:border-primary/20 transition-colors">
+                <div class="flex items-center gap-2 mb-3"><span class="material-icons text-primary text-sm">psychology</span><span class="text-white font-bold text-sm">Central de Inteligência</span></div>
+                <p class="text-gray-400 text-xs leading-relaxed mb-3">+40 soluções de IA pré-configuradas para produtividade, conteúdo, análise e automação.</p>
+                <span class="inline-block text-[9px] uppercase tracking-wider text-primary/70 bg-primary/10 px-2 py-0.5 rounded font-bold">Todos os níveis</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- EIXO 5: EDUCAÇÃO -->
+        <div class="eixo-item border border-white/[0.06] rounded-xl overflow-hidden bg-[#0e0e0e] hover:border-primary/20 transition-colors">
+          <button class="eixo-trigger w-full flex items-center justify-between p-6 text-left group" onclick="toggleEixo(this)">
+            <div class="flex items-center gap-4">
+              <div class="w-12 h-12 rounded-xl bg-primary/15 flex items-center justify-center flex-shrink-0"><span class="material-icons text-primary text-xl">school</span></div>
+              <div><h3 class="text-lg md:text-xl font-bold text-white group-hover:text-primary transition-colors">EDUCAÇÃO</h3><p class="text-gray-500 text-sm">Formação Contínua</p></div>
+            </div>
+            <div class="flex items-center gap-3">
+              <span class="text-[10px] uppercase tracking-wider text-gray-600 font-medium hidden md:block">2 entregáveis</span>
+              <span class="material-icons text-gray-500 eixo-chevron transition-transform duration-300">expand_more</span>
+            </div>
+          </button>
+          <div class="eixo-content px-6 pb-6" style="max-height: 0;">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2">
+              <div class="bg-white/[0.02] border border-white/5 rounded-xl p-5 hover:border-primary/20 transition-colors">
+                <div class="flex items-center gap-2 mb-3"><span class="material-icons text-primary text-sm">play_circle</span><span class="text-white font-bold text-sm">Trilhas B'Academy</span></div>
+                <p class="text-gray-400 text-xs leading-relaxed mb-3">Cursos gravados com frameworks exclusivos: modelo de mentoria, precificação, funis, automação e mais.</p>
+                <span class="inline-block text-[9px] uppercase tracking-wider text-primary/70 bg-primary/10 px-2 py-0.5 rounded font-bold">Todos os níveis</span>
+              </div>
+              <div class="bg-white/[0.02] border border-white/5 rounded-xl p-5 hover:border-primary/20 transition-colors">
+                <div class="flex items-center gap-2 mb-3"><span class="material-icons text-primary text-sm">inventory_2</span><span class="text-white font-bold text-sm">Kit Participante</span></div>
+                <p class="text-gray-400 text-xs leading-relaxed mb-3">Material de apoio completo: workbooks, checklists, templates e guias de implementação.</p>
+                <span class="inline-block text-[9px] uppercase tracking-wider text-primary/70 bg-primary/10 px-2 py-0.5 rounded font-bold">Todos os níveis</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- EIXO 6: RESULTADOS -->
+        <div class="eixo-item border border-white/[0.06] rounded-xl overflow-hidden bg-[#0e0e0e] hover:border-primary/20 transition-colors">
+          <button class="eixo-trigger w-full flex items-center justify-between p-6 text-left group" onclick="toggleEixo(this)">
+            <div class="flex items-center gap-4">
+              <div class="w-12 h-12 rounded-xl bg-primary/15 flex items-center justify-center flex-shrink-0"><span class="material-icons text-primary text-xl">emoji_events</span></div>
+              <div><h3 class="text-lg md:text-xl font-bold text-white group-hover:text-primary transition-colors">RESULTADOS</h3><p class="text-gray-500 text-sm">Métricas &amp; Acompanhamento</p></div>
+            </div>
+            <div class="flex items-center gap-3">
+              <span class="text-[10px] uppercase tracking-wider text-gray-600 font-medium hidden md:block">2 entregáveis</span>
+              <span class="material-icons text-gray-500 eixo-chevron transition-transform duration-300">expand_more</span>
+            </div>
+          </button>
+          <div class="eixo-content px-6 pb-6" style="max-height: 0;">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2">
+              <div class="bg-white/[0.02] border border-white/5 rounded-xl p-5 hover:border-primary/20 transition-colors">
+                <div class="flex items-center gap-2 mb-3"><span class="material-icons text-primary text-sm">analytics</span><span class="text-white font-bold text-sm">Check-In Mensal de KPIs</span></div>
+                <p class="text-gray-400 text-xs leading-relaxed mb-3">Acompanhamento mensal dos indicadores-chave do seu negócio com feedback direcionado.</p>
+                <span class="inline-block text-[9px] uppercase tracking-wider text-gray-500 bg-white/5 px-2 py-0.5 rounded font-bold">Formato varia por nível</span>
+              </div>
+              <div class="bg-white/[0.02] border border-white/5 rounded-xl p-5 hover:border-primary/20 transition-colors">
+                <div class="flex items-center gap-2 mb-3"><span class="material-icons text-primary text-sm">chat</span><span class="text-white font-bold text-sm">Acompanhamento de Ações</span></div>
+                <p class="text-gray-400 text-xs leading-relaxed mb-3">Follow-up de execução via WhatsApp para garantir que o plano está sendo implementado.</p>
+                <span class="inline-block text-[9px] uppercase tracking-wider text-gray-500 bg-white/5 px-2 py-0.5 rounded font-bold">Mensal → Semanal (por nível)</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- EIXO 7: TECNOLOGIA -->
+        <div class="eixo-item border border-white/[0.06] rounded-xl overflow-hidden bg-[#0e0e0e] hover:border-primary/20 transition-colors">
+          <button class="eixo-trigger w-full flex items-center justify-between p-6 text-left group" onclick="toggleEixo(this)">
+            <div class="flex items-center gap-4">
+              <div class="w-12 h-12 rounded-xl bg-primary/15 flex items-center justify-center flex-shrink-0"><span class="material-icons text-primary text-xl">memory</span></div>
+              <div><h3 class="text-lg md:text-xl font-bold text-white group-hover:text-primary transition-colors">TECNOLOGIA</h3><p class="text-gray-500 text-sm">Serviços &amp; Plataformas Incluídos</p></div>
+            </div>
+            <div class="flex items-center gap-3">
+              <span class="text-[10px] uppercase tracking-wider text-gray-600 font-medium hidden md:block">2 entregáveis</span>
+              <span class="material-icons text-gray-500 eixo-chevron transition-transform duration-300">expand_more</span>
+            </div>
+          </button>
+          <div class="eixo-content px-6 pb-6" style="max-height: 0;">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2">
+              <div class="bg-white/[0.02] border border-white/5 rounded-xl p-5 hover:border-primary/20 transition-colors">
+                <div class="flex items-center gap-2 mb-3"><span class="material-icons text-primary text-sm">play_circle</span><span class="text-white font-bold text-sm">Experience Flix</span></div>
+                <p class="text-gray-400 text-xs leading-relaxed mb-3">Plataforma de cursos whitelabel incluída — sua própria "Netflix" com sua marca e domínio.</p>
+                <span class="inline-block text-[9px] uppercase tracking-wider text-gray-500 bg-white/5 px-2 py-0.5 rounded font-bold">Nível incluso varia</span>
+              </div>
+              <div class="bg-white/[0.02] border border-white/5 rounded-xl p-5 hover:border-primary/20 transition-colors">
+                <div class="flex items-center gap-2 mb-3"><span class="material-icons text-primary text-sm">filter_alt</span><span class="text-white font-bold text-sm">Funnel Pages</span></div>
+                <p class="text-gray-400 text-xs leading-relaxed mb-3">Funis de vendas profissionais incluídos: copy, design e desenvolvimento.</p>
+                <span class="inline-block text-[9px] uppercase tracking-wider text-gray-500 bg-white/5 px-2 py-0.5 rounded font-bold">1 a 7 funis (por nível)</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="text-center mt-12">
+        <p class="text-gray-500 text-sm"><span class="text-white font-bold">+20 entregáveis</span> distribuídos em 7 eixos · Frequência e profundidade variam por nível</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ FOLD 4: JORNADA DO EXPERT ═══════════════ -->
+  <section id="jornada" class="relative py-24 lg:py-32 overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-b from-bg-dark via-[#0d0608] to-bg-dark"></div>
+    <div class="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <span class="inline-block text-primary font-semibold tracking-[0.2em] uppercase text-xs mb-3 border border-primary/30 bg-primary/10 px-3 py-1 rounded-full">Sua Jornada</span>
+        <h2 class="text-4xl md:text-5xl font-extrabold text-white mb-4 tracking-tight">Do Dia 1 ao Mês 12: O Caminho da Escalabilidade</h2>
+      </div>
+
+      <!-- Timeline Desktop -->
+      <div class="hidden md:block relative">
+        <!-- Linha -->
+        <div class="absolute top-[60px] left-0 right-0 h-[3px] bg-gradient-to-r from-primary via-primary-light to-primary rounded-full" style="box-shadow: 0 0 15px rgba(194,34,53,0.3);"></div>
+        <div class="grid grid-cols-4 gap-6">
+          <!-- Marco 1 -->
+          <div class="relative pt-[42px]">
+            <div class="absolute top-[51px] left-1/2 -translate-x-1/2 w-5 h-5 rounded-full bg-bg-dark border-[3px] border-primary z-10" style="box-shadow: 0 0 12px rgba(194,34,53,0.5);"></div>
+            <div class="mt-12 bg-[#0e0e0e] border border-white/[0.06] rounded-xl p-6 card-hover">
+              <span class="text-[10px] uppercase tracking-wider text-primary font-bold block mb-2">Semana 1-4</span>
+              <h3 class="text-lg font-bold text-white mb-2">ATIVAÇÃO</h3>
+              <p class="text-gray-400 text-xs leading-relaxed">Onboarding, diagnóstico 360º e Mapa B'Expert. Você sai com clareza total sobre seu modelo de negócio, posicionamento e primeiros passos.</p>
+            </div>
+          </div>
+          <!-- Marco 2 -->
+          <div class="relative pt-[42px]">
+            <div class="absolute top-[51px] left-1/2 -translate-x-1/2 w-5 h-5 rounded-full bg-bg-dark border-[3px] border-primary z-10" style="box-shadow: 0 0 12px rgba(194,34,53,0.5);"></div>
+            <div class="mt-12 bg-[#0e0e0e] border border-white/[0.06] rounded-xl p-6 card-hover">
+              <span class="text-[10px] uppercase tracking-wider text-primary font-bold block mb-2">Mês 2-3</span>
+              <h3 class="text-lg font-bold text-white mb-2">ESTRUTURAÇÃO</h3>
+              <p class="text-gray-400 text-xs leading-relaxed">Modelo de receita definido, oferta de alto valor validada e primeiros clientes no novo formato. Tecnologia básica implementada.</p>
+            </div>
+          </div>
+          <!-- Marco 3 -->
+          <div class="relative pt-[42px]">
+            <div class="absolute top-[51px] left-1/2 -translate-x-1/2 w-5 h-5 rounded-full bg-bg-dark border-[3px] border-primary z-10" style="box-shadow: 0 0 12px rgba(194,34,53,0.5);"></div>
+            <div class="mt-12 bg-[#0e0e0e] border border-white/[0.06] rounded-xl p-6 card-hover">
+              <span class="text-[10px] uppercase tracking-wider text-primary font-bold block mb-2">Mês 4-6</span>
+              <h3 class="text-lg font-bold text-white mb-2">ESCALA</h3>
+              <p class="text-gray-400 text-xs leading-relaxed">Automações ativas, processos de entrega replicáveis e primeiros resultados de receita recorrente. Networking gerando oportunidades.</p>
+            </div>
+          </div>
+          <!-- Marco 4 -->
+          <div class="relative pt-[42px]">
+            <div class="absolute top-[51px] left-1/2 -translate-x-1/2 w-5 h-5 rounded-full bg-bg-dark border-[3px] border-primary z-10" style="box-shadow: 0 0 12px rgba(194,34,53,0.5);"></div>
+            <div class="mt-12 bg-[#0e0e0e] border border-white/[0.06] rounded-xl p-6 card-hover">
+              <span class="text-[10px] uppercase tracking-wider text-primary font-bold block mb-2">Mês 7-12</span>
+              <h3 class="text-lg font-bold text-white mb-2">DOMÍNIO</h3>
+              <p class="text-gray-400 text-xs leading-relaxed">Negócio rodando com previsibilidade. Expansão de portfólio, aumento de ticket e posição de liderança no nicho. IA trabalhando por você.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Timeline Mobile -->
+      <div class="md:hidden space-y-6">
+        <div class="flex gap-4">
+          <div class="flex flex-col items-center">
+            <div class="w-4 h-4 rounded-full border-2 border-primary bg-bg-dark" style="box-shadow:0 0 10px rgba(194,34,53,0.5);"></div>
+            <div class="w-0.5 flex-1 bg-gradient-to-b from-primary to-primary/20"></div>
+          </div>
+          <div class="bg-[#0e0e0e] border border-white/[0.06] rounded-xl p-5 flex-1 mb-2">
+            <span class="text-[10px] uppercase tracking-wider text-primary font-bold block mb-1">Semana 1-4</span>
+            <h3 class="text-base font-bold text-white mb-1">ATIVAÇÃO</h3>
+            <p class="text-gray-400 text-xs leading-relaxed">Onboarding, diagnóstico 360º e Mapa B'Expert. Clareza total sobre modelo e posicionamento.</p>
+          </div>
+        </div>
+        <div class="flex gap-4">
+          <div class="flex flex-col items-center">
+            <div class="w-4 h-4 rounded-full border-2 border-primary bg-bg-dark" style="box-shadow:0 0 10px rgba(194,34,53,0.5);"></div>
+            <div class="w-0.5 flex-1 bg-gradient-to-b from-primary to-primary/20"></div>
+          </div>
+          <div class="bg-[#0e0e0e] border border-white/[0.06] rounded-xl p-5 flex-1 mb-2">
+            <span class="text-[10px] uppercase tracking-wider text-primary font-bold block mb-1">Mês 2-3</span>
+            <h3 class="text-base font-bold text-white mb-1">ESTRUTURAÇÃO</h3>
+            <p class="text-gray-400 text-xs leading-relaxed">Modelo de receita definido, oferta validada e primeiros clientes no novo formato.</p>
+          </div>
+        </div>
+        <div class="flex gap-4">
+          <div class="flex flex-col items-center">
+            <div class="w-4 h-4 rounded-full border-2 border-primary bg-bg-dark" style="box-shadow:0 0 10px rgba(194,34,53,0.5);"></div>
+            <div class="w-0.5 flex-1 bg-gradient-to-b from-primary to-primary/20"></div>
+          </div>
+          <div class="bg-[#0e0e0e] border border-white/[0.06] rounded-xl p-5 flex-1 mb-2">
+            <span class="text-[10px] uppercase tracking-wider text-primary font-bold block mb-1">Mês 4-6</span>
+            <h3 class="text-base font-bold text-white mb-1">ESCALA</h3>
+            <p class="text-gray-400 text-xs leading-relaxed">Automações ativas, entrega replicável e primeiros resultados de receita recorrente.</p>
+          </div>
+        </div>
+        <div class="flex gap-4">
+          <div class="flex flex-col items-center">
+            <div class="w-4 h-4 rounded-full border-2 border-primary bg-bg-dark"></div>
+          </div>
+          <div class="bg-[#0e0e0e] border border-white/[0.06] rounded-xl p-5 flex-1">
+            <span class="text-[10px] uppercase tracking-wider text-primary font-bold block mb-1">Mês 7-12</span>
+            <h3 class="text-base font-bold text-white mb-1">DOMÍNIO</h3>
+            <p class="text-gray-400 text-xs leading-relaxed">Negócio rodando com previsibilidade. Liderança no nicho e IA trabalhando por você.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ FOLD 5: NÍVEIS DO PROGRAMA ═══════════════ -->
+  <section id="niveis" class="relative py-24 lg:py-32 bg-bg-dark overflow-hidden">
+    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-primary/[0.03] rounded-full blur-[180px] pointer-events-none"></div>
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="text-center mb-16">
+        <span class="inline-block text-primary font-semibold tracking-[0.2em] uppercase text-xs mb-3 border border-primary/30 bg-primary/10 px-3 py-1 rounded-full">Encontre Seu Nível</span>
+        <h2 class="text-4xl md:text-5xl font-extrabold text-white mb-4 tracking-tight">Quatro Níveis. Um para Cada Fase do Seu Negócio.</h2>
+        <p class="text-gray-400 max-w-2xl mx-auto text-lg">Cada nível foi projetado para uma fase específica de maturidade. Identifique onde você está — e nós mostramos o caminho.</p>
+      </div>
+
+      <div class="space-y-6">
+
+        <!-- STARTER -->
+        <div class="border border-white/[0.06] rounded-2xl bg-[#0e0e0e] overflow-hidden hover:border-primary/30 transition-all duration-300">
+          <div class="flex flex-col lg:flex-row">
+            <div class="lg:w-1/3 p-8 lg:p-10 bg-gradient-to-br from-primary/10 to-transparent border-b lg:border-b-0 lg:border-r border-white/5">
+              <span class="inline-block text-[10px] uppercase tracking-[0.2em] font-black text-primary bg-primary/20 border border-primary/30 px-3 py-1 rounded mb-4">STARTER</span>
+              <h3 class="text-2xl lg:text-3xl font-black text-white mb-2">Vida de Expert</h3>
+              <div class="space-y-3 mt-6">
+                <div><span class="text-[10px] uppercase tracking-wider text-gray-500 block">Faturamento Atual</span><span class="text-white font-bold text-lg">R$ 10k a 20k/mês</span></div>
+                <div><span class="text-[10px] uppercase tracking-wider text-gray-500 block">Perfil</span><span class="text-white font-bold">Expert de Negócios</span></div>
+              </div>
+              <p class="text-gray-400 text-sm leading-relaxed mt-6 italic">Para quem está transformando conhecimento em negócio rentável.</p>
+            </div>
+            <div class="lg:w-2/3 p-8 lg:p-10">
+              <p class="text-gray-400 text-sm mb-6">Destaques do que está incluído neste nível:</p>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-3 mb-8">
+                <div class="flex items-center gap-3"><span class="material-icons text-primary text-sm">check_circle</span><span class="text-gray-300 text-sm">Mapa B'Expert (4 semanas)</span></div>
+                <div class="flex items-center gap-3"><span class="material-icons text-primary text-sm">check_circle</span><span class="text-gray-300 text-sm">Mentoria individual trimestral</span></div>
+                <div class="flex items-center gap-3"><span class="material-icons text-primary text-sm">check_circle</span><span class="text-gray-300 text-sm">Encontros táticos semanais</span></div>
+                <div class="flex items-center gap-3"><span class="material-icons text-primary text-sm">check_circle</span><span class="text-gray-300 text-sm">Comunidade + 2 imersões/ano</span></div>
+                <div class="flex items-center gap-3"><span class="material-icons text-primary text-sm">check_circle</span><span class="text-gray-300 text-sm">B'Mentor IA 24/7</span></div>
+                <div class="flex items-center gap-3"><span class="material-icons text-primary text-sm">check_circle</span><span class="text-gray-300 text-sm">Experience Flix Starter + 1 Funil</span></div>
+              </div>
+              <div class="flex items-center gap-3 p-3 bg-primary/5 border border-primary/10 rounded-lg">
+                <span class="material-icons text-primary text-sm">auto_awesome</span>
+                <span class="text-gray-400 text-xs">Tecnologia incluída com economia de <span class="text-primary font-bold">R$ 694/mês</span> vs. contratação avulsa</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- PROFESSIONAL -->
+        <div class="border border-white/[0.06] rounded-2xl bg-[#0e0e0e] overflow-hidden hover:border-primary/30 transition-all duration-300">
+          <div class="flex flex-col lg:flex-row">
+            <div class="lg:w-1/3 p-8 lg:p-10 bg-gradient-to-br from-primary/10 to-transparent border-b lg:border-b-0 lg:border-r border-white/5">
+              <span class="inline-block text-[10px] uppercase tracking-[0.2em] font-black text-primary bg-primary/20 border border-primary/30 px-3 py-1 rounded mb-4">PROFESSIONAL</span>
+              <h3 class="text-2xl lg:text-3xl font-black text-white mb-2">Acelera Expert</h3>
+              <div class="space-y-3 mt-6">
+                <div><span class="text-[10px] uppercase tracking-wider text-gray-500 block">Faturamento Atual</span><span class="text-white font-bold text-lg">R$ 20k a 40k/mês</span></div>
+                <div><span class="text-[10px] uppercase tracking-wider text-gray-500 block">Perfil</span><span class="text-white font-bold">Negócio de Conhecimento</span></div>
+              </div>
+              <p class="text-gray-400 text-sm leading-relaxed mt-6 italic">Para quem já fatura mas precisa de método e escala.</p>
+            </div>
+            <div class="lg:w-2/3 p-8 lg:p-10">
+              <p class="text-gray-400 text-sm mb-6">Destaques do que está incluído neste nível:</p>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-3 mb-8">
+                <div class="flex items-center gap-3"><span class="material-icons text-primary text-sm">check_circle</span><span class="text-gray-300 text-sm">Tudo do Starter +</span></div>
+                <div class="flex items-center gap-3"><span class="material-icons text-primary text-sm">check_circle</span><span class="text-gray-300 text-sm">Mentoria individual mensal</span></div>
+                <div class="flex items-center gap-3"><span class="material-icons text-primary text-sm">check_circle</span><span class="text-gray-300 text-sm">4 imersões presenciais/ano</span></div>
+                <div class="flex items-center gap-3"><span class="material-icons text-primary text-sm">check_circle</span><span class="text-gray-300 text-sm">Flix Pro (3 áreas de conteúdo)</span></div>
+                <div class="flex items-center gap-3"><span class="material-icons text-primary text-sm">check_circle</span><span class="text-gray-300 text-sm">3 funis de vendas incluídos</span></div>
+                <div class="flex items-center gap-3"><span class="material-icons text-primary text-sm">check_circle</span><span class="text-gray-300 text-sm">Acompanhamento quinzenal WhatsApp</span></div>
+              </div>
+              <div class="flex items-center gap-3 p-3 bg-primary/5 border border-primary/10 rounded-lg">
+                <span class="material-icons text-primary text-sm">auto_awesome</span>
+                <span class="text-gray-400 text-xs">Tecnologia incluída com economia de <span class="text-primary font-bold">R$ 1.394/mês</span> vs. contratação avulsa</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- BUSINESS -->
+        <div class="border border-white/[0.06] rounded-2xl bg-[#0e0e0e] overflow-hidden hover:border-primary/30 transition-all duration-300">
+          <div class="flex flex-col lg:flex-row">
+            <div class="lg:w-1/3 p-8 lg:p-10 bg-gradient-to-br from-primary/10 to-transparent border-b lg:border-b-0 lg:border-r border-white/5">
+              <span class="inline-block text-[10px] uppercase tracking-[0.2em] font-black text-primary bg-primary/20 border border-primary/30 px-3 py-1 rounded mb-4">BUSINESS</span>
+              <h3 class="text-2xl lg:text-3xl font-black text-white mb-2">Expert Business</h3>
+              <div class="space-y-3 mt-6">
+                <div><span class="text-[10px] uppercase tracking-wider text-gray-500 block">Faturamento Atual</span><span class="text-white font-bold text-lg">R$ 40k a 80k/mês</span></div>
+                <div><span class="text-[10px] uppercase tracking-wider text-gray-500 block">Perfil</span><span class="text-white font-bold">Empresa de Educação</span></div>
+              </div>
+              <p class="text-gray-400 text-sm leading-relaxed mt-6 italic">Para empresas de educação que buscam escala e eficiência.</p>
+            </div>
+            <div class="lg:w-2/3 p-8 lg:p-10">
+              <p class="text-gray-400 text-sm mb-6">Destaques do que está incluído neste nível:</p>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-3 mb-8">
+                <div class="flex items-center gap-3"><span class="material-icons text-primary text-sm">check_circle</span><span class="text-gray-300 text-sm">Tudo do Professional +</span></div>
+                <div class="flex items-center gap-3"><span class="material-icons text-primary text-sm">check_circle</span><span class="text-gray-300 text-sm">Mentoria individual quinzenal</span></div>
+                <div class="flex items-center gap-3"><span class="material-icons text-primary text-sm">check_circle</span><span class="text-gray-300 text-sm">Imersões ilimitadas</span></div>
+                <div class="flex items-center gap-3"><span class="material-icons text-primary text-sm">check_circle</span><span class="text-gray-300 text-sm">Flix Business (áreas ilimitadas)</span></div>
+                <div class="flex items-center gap-3"><span class="material-icons text-primary text-sm">check_circle</span><span class="text-gray-300 text-sm">5 funis de vendas incluídos</span></div>
+                <div class="flex items-center gap-3"><span class="material-icons text-primary text-sm">check_circle</span><span class="text-gray-300 text-sm">Acompanhamento semanal WhatsApp</span></div>
+              </div>
+              <div class="flex items-center gap-3 p-3 bg-primary/5 border border-primary/10 rounded-lg">
+                <span class="material-icons text-primary text-sm">auto_awesome</span>
+                <span class="text-gray-400 text-xs">Tecnologia incluída com economia de <span class="text-primary font-bold">R$ 2.094/mês</span> vs. contratação avulsa</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- SCALE -->
+        <div class="border border-white/[0.06] rounded-2xl bg-[#0e0e0e] overflow-hidden hover:border-primary/30 transition-all duration-300">
+          <div class="flex flex-col lg:flex-row">
+            <div class="lg:w-1/3 p-8 lg:p-10 bg-gradient-to-br from-primary/10 to-transparent border-b lg:border-b-0 lg:border-r border-white/5">
+              <span class="inline-block text-[10px] uppercase tracking-[0.2em] font-black text-primary bg-primary/20 border border-primary/30 px-3 py-1 rounded mb-4">SCALE</span>
+              <h3 class="text-2xl lg:text-3xl font-black text-white mb-2">Expert Consulting</h3>
+              <div class="space-y-3 mt-6">
+                <div><span class="text-[10px] uppercase tracking-wider text-gray-500 block">Faturamento Atual</span><span class="text-white font-bold text-lg">R$ 1M+/ano</span></div>
+                <div><span class="text-[10px] uppercase tracking-wider text-gray-500 block">Perfil</span><span class="text-white font-bold">Ecossistema de Educação</span></div>
+              </div>
+              <p class="text-gray-400 text-sm leading-relaxed mt-6 italic">Para ecossistemas consolidados que querem dominar o mercado.</p>
+            </div>
+            <div class="lg:w-2/3 p-8 lg:p-10">
+              <p class="text-gray-400 text-sm mb-6">Destaques do que está incluído neste nível:</p>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-3 mb-8">
+                <div class="flex items-center gap-3"><span class="material-icons text-primary text-sm">check_circle</span><span class="text-gray-300 text-sm">Tudo do Business +</span></div>
+                <div class="flex items-center gap-3"><span class="material-icons text-primary text-sm">check_circle</span><span class="text-gray-300 text-sm">Mentoria individual semanal</span></div>
+                <div class="flex items-center gap-3"><span class="material-icons text-primary text-sm">check_circle</span><span class="text-gray-300 text-sm">Flix Enterprise (com app mobile)</span></div>
+                <div class="flex items-center gap-3"><span class="material-icons text-primary text-sm">check_circle</span><span class="text-gray-300 text-sm">7 funis de vendas incluídos</span></div>
+                <div class="flex items-center gap-3"><span class="material-icons text-primary text-sm">check_circle</span><span class="text-gray-300 text-sm">Acompanhamento diário dedicado</span></div>
+                <div class="flex items-center gap-3"><span class="material-icons text-primary text-sm">check_circle</span><span class="text-gray-300 text-sm">Consultoria estratégica C-Level</span></div>
+              </div>
+              <div class="flex items-center gap-3 p-3 bg-primary/5 border border-primary/10 rounded-lg">
+                <span class="material-icons text-primary text-sm">auto_awesome</span>
+                <span class="text-gray-400 text-xs">Tecnologia incluída com economia de <span class="text-primary font-bold">R$ 3.294/mês</span> vs. contratação avulsa</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CTA abaixo dos níveis -->
+      <div class="text-center mt-12 p-8 bg-white/[0.02] border border-white/5 rounded-2xl">
+        <p class="text-gray-400 mb-2">Não tem certeza de qual nível é o seu?</p>
+        <p class="text-white font-bold text-lg mb-6">Receba uma análise personalizada com recomendação do nível ideal + investimento detalhado.</p>
+        <a href="https://planoexpert.blenduca.com.br/" class="inline-flex items-center gap-2 bg-primary text-white font-bold py-4 px-8 rounded-xl shadow-[0_0_30px_-5px_rgba(194,34,53,0.5)] hover:scale-[1.02] transition-all">
+          QUERO MINHA ANÁLISE PERSONALIZADA <span class="material-icons text-sm">arrow_forward</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ FOLD 6: CASES ═══════════════ -->
+  <section id="cases-experts" class="relative py-24 lg:py-32 overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-b from-bg-dark via-[#4a0d17]/20 to-bg-dark"></div>
+    <div class="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <span class="inline-block text-primary font-semibold tracking-[0.2em] uppercase text-xs mb-3 border border-primary/30 bg-primary/10 px-3 py-1 rounded-full">Histórias de Sucesso</span>
+        <h2 class="text-4xl md:text-5xl font-extrabold text-white mb-4 tracking-tight">Transformações <span class="text-gradient-hero">Reais</span></h2>
+      </div>
+      <div class="space-y-6">
+        <!-- Case 1 -->
+        <div class="bg-card-dark rounded-2xl border border-white/10 overflow-hidden card-hover">
+          <div class="flex flex-col md:flex-row">
+            <div class="md:w-4/12 relative bg-gradient-to-br from-surface to-card-dark flex items-center justify-center p-8">
+              <span class="material-icons text-8xl text-white/5">person</span>
+            </div>
+            <div class="md:w-8/12 p-6 md:p-8 flex flex-col justify-between">
+              <div>
+                <p class="text-gray-300 font-light italic leading-relaxed mb-4">"O B'Experts me deu clareza total sobre como sair do 1:1 e construir um modelo recorrente. Em 4 meses, estruturei minha mentoria em grupo e dobrei o faturamento."</p>
+                <div class="mb-4"><span class="text-white font-bold">Carlos Mendes</span><span class="block text-gray-500 text-sm">CEO, FinGrowth Consulting</span></div>
+              </div>
+              <div class="bg-white/5 rounded-xl p-4 border border-white/5">
+                <span class="text-[10px] uppercase tracking-widest text-gray-500">Faturamento Mensal</span>
+                <div class="flex items-center gap-3 mt-1">
+                  <span class="text-gray-500 line-through text-sm">R$ 25k</span>
+                  <span class="material-icons text-green-400 text-sm">arrow_forward</span>
+                  <span class="text-green-400 font-bold text-lg">R$ 52k</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Case 2 -->
+        <div class="bg-card-dark rounded-2xl border border-white/10 overflow-hidden card-hover">
+          <div class="flex flex-col md:flex-row">
+            <div class="md:w-4/12 relative bg-gradient-to-br from-surface to-card-dark flex items-center justify-center p-8">
+              <span class="material-icons text-8xl text-white/5">person</span>
+            </div>
+            <div class="md:w-8/12 p-6 md:p-8 flex flex-col justify-between">
+              <div>
+                <p class="text-gray-300 font-light italic leading-relaxed mb-4">"A comunidade B'Experts abriu portas que eu não imaginava. As imersões presenciais geraram 3 parcerias estratégicas que representam 40% da minha receita atual."</p>
+                <div class="mb-4"><span class="text-white font-bold">Sarah Jenkins</span><span class="block text-gray-500 text-sm">Fundadora, Creative Flow</span></div>
+              </div>
+              <div class="bg-white/5 rounded-xl p-4 border border-white/5">
+                <span class="text-[10px] uppercase tracking-widest text-gray-500">Receita Recorrente</span>
+                <div class="flex items-center gap-3 mt-1">
+                  <span class="text-gray-500 line-through text-sm">R$ 60k</span>
+                  <span class="material-icons text-green-400 text-sm">arrow_forward</span>
+                  <span class="text-green-400 font-bold text-lg">R$ 225k</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ FOLD 7: FAQ ═══════════════ -->
+  <section id="faq" class="relative py-24 lg:py-32 bg-bg-dark">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <span class="inline-block text-primary font-semibold tracking-[0.2em] uppercase text-xs mb-3 border border-primary/30 bg-primary/10 px-3 py-1 rounded-full">Perguntas Frequentes</span>
+        <h2 class="text-4xl md:text-5xl font-extrabold text-white mb-4 tracking-tight">Tire Suas Dúvidas</h2>
+      </div>
+      <div id="faqAccordion" class="space-y-3">
+
+        <div class="faq-item border border-white/[0.06] rounded-xl bg-[#0e0e0e]">
+          <button class="faq-trigger w-full flex items-center justify-between p-6 text-left" onclick="toggleFaq(this)">
+            <span class="text-white font-semibold pr-4">Para quem é o B'Experts?</span>
+            <span class="material-icons text-gray-500 faq-chevron transition-transform duration-300">expand_more</span>
+          </button>
+          <div class="faq-content px-6 pb-6" style="max-height:0;">
+            <p class="text-gray-400 text-sm leading-relaxed pt-1">Para mentores, consultores e especialistas que faturam entre R$10k e R$1M+/mês e querem migrar do modelo 1:1 para um negócio de conhecimento recorrente e escalável.</p>
+          </div>
+        </div>
+
+        <div class="faq-item border border-white/[0.06] rounded-xl bg-[#0e0e0e]">
+          <button class="faq-trigger w-full flex items-center justify-between p-6 text-left" onclick="toggleFaq(this)">
+            <span class="text-white font-semibold pr-4">Preciso ter experiência com tecnologia?</span>
+            <span class="material-icons text-gray-500 faq-chevron transition-transform duration-300">expand_more</span>
+          </button>
+          <div class="faq-content px-6 pb-6" style="max-height:0;">
+            <p class="text-gray-400 text-sm leading-relaxed pt-1">Não. Todo o setup tecnológico (plataforma, funis, automações) é implementado pelo nosso time. Você foca na sua expertise, nós cuidamos da infraestrutura.</p>
+          </div>
+        </div>
+
+        <div class="faq-item border border-white/[0.06] rounded-xl bg-[#0e0e0e]">
+          <button class="faq-trigger w-full flex items-center justify-between p-6 text-left" onclick="toggleFaq(this)">
+            <span class="text-white font-semibold pr-4">Qual o formato das mentorias e encontros?</span>
+            <span class="material-icons text-gray-500 faq-chevron transition-transform duration-300">expand_more</span>
+          </button>
+          <div class="faq-content px-6 pb-6" style="max-height:0;">
+            <p class="text-gray-400 text-sm leading-relaxed pt-1">Encontros táticos semanais (toda terça, 19:30h), plantão de dúvidas semanal (toda quinta, 16h), mentorias individuais com frequência por nível, e B'Mentor IA disponível 24/7.</p>
+          </div>
+        </div>
+
+        <div class="faq-item border border-white/[0.06] rounded-xl bg-[#0e0e0e]">
+          <button class="faq-trigger w-full flex items-center justify-between p-6 text-left" onclick="toggleFaq(this)">
+            <span class="text-white font-semibold pr-4">Quanto tempo leva para ver resultados?</span>
+            <span class="material-icons text-gray-500 faq-chevron transition-transform duration-300">expand_more</span>
+          </button>
+          <div class="faq-content px-6 pb-6" style="max-height:0;">
+            <p class="text-gray-400 text-sm leading-relaxed pt-1">As primeiras 4 semanas são de ativação (Mapa B'Expert). Entre o mês 2-3 os primeiros resultados do novo modelo começam a aparecer. Mês 4-6 é onde a escala acontece de fato.</p>
+          </div>
+        </div>
+
+        <div class="faq-item border border-white/[0.06] rounded-xl bg-[#0e0e0e]">
+          <button class="faq-trigger w-full flex items-center justify-between p-6 text-left" onclick="toggleFaq(this)">
+            <span class="text-white font-semibold pr-4">O que está incluído em tecnologia?</span>
+            <span class="material-icons text-gray-500 faq-chevron transition-transform duration-300">expand_more</span>
+          </button>
+          <div class="faq-content px-6 pb-6" style="max-height:0;">
+            <p class="text-gray-400 text-sm leading-relaxed pt-1">Todos os níveis incluem a plataforma Experience Flix (sua Netflix de cursos whitelabel) e Funnel Pages (funis de vendas). A quantidade e complexidade variam por nível, com economia significativa vs. contratação separada.</p>
+          </div>
+        </div>
+
+        <div class="faq-item border border-white/[0.06] rounded-xl bg-[#0e0e0e]">
+          <button class="faq-trigger w-full flex items-center justify-between p-6 text-left" onclick="toggleFaq(this)">
+            <span class="text-white font-semibold pr-4">Como funciona o investimento?</span>
+            <span class="material-icons text-gray-500 faq-chevron transition-transform duration-300">expand_more</span>
+          </button>
+          <div class="faq-content px-6 pb-6" style="max-height:0;">
+            <p class="text-gray-400 text-sm leading-relaxed pt-1">O investimento é mensal, com contrato de 12 meses e valor de entrada. Os valores variam por nível e são apresentados na reunião consultiva após análise do seu negócio. Assim garantimos que você entre no nível certo.</p>
+          </div>
+        </div>
+
+        <div class="faq-item border border-white/[0.06] rounded-xl bg-[#0e0e0e]">
+          <button class="faq-trigger w-full flex items-center justify-between p-6 text-left" onclick="toggleFaq(this)">
+            <span class="text-white font-semibold pr-4">Posso trocar de nível depois?</span>
+            <span class="material-icons text-gray-500 faq-chevron transition-transform duration-300">expand_more</span>
+          </button>
+          <div class="faq-content px-6 pb-6" style="max-height:0;">
+            <p class="text-gray-400 text-sm leading-relaxed pt-1">Sim. O programa é desenhado para evolução. Conforme seu negócio cresce, você pode migrar para o próximo nível com condições especiais.</p>
+          </div>
+        </div>
+
+        <div class="faq-item border border-white/[0.06] rounded-xl bg-[#0e0e0e]">
+          <button class="faq-trigger w-full flex items-center justify-between p-6 text-left" onclick="toggleFaq(this)">
+            <span class="text-white font-semibold pr-4">Como é o processo para entrar?</span>
+            <span class="material-icons text-gray-500 faq-chevron transition-transform duration-300">expand_more</span>
+          </button>
+          <div class="faq-content px-6 pb-6" style="max-height:0;">
+            <p class="text-gray-400 text-sm leading-relaxed pt-1">1) Você preenche o formulário de interesse. 2) Nosso time faz uma análise do seu negócio. 3) Agendamos uma reunião consultiva onde apresentamos o plano personalizado com nível recomendado e investimento detalhado. 4) Se fizer sentido para ambos os lados, você inicia.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ FOLD 8: CTA FINAL ═══════════════ -->
+  <section id="cta-final" class="relative py-24 md:py-32 overflow-hidden">
+    <div class="absolute inset-0 bg-bg-dark"></div>
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/15 rounded-full blur-[200px] pointer-events-none"></div>
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] bg-primary/20 rounded-full blur-[100px] pointer-events-none"></div>
+    <div class="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-4xl md:text-5xl font-extrabold text-white tracking-tight mb-6">Pronto para Escalar Sua Expertise?</h2>
+      <p class="text-xl text-gray-300 font-light leading-relaxed max-w-2xl mx-auto mb-10">
+        Receba um plano personalizado com: análise do seu modelo atual, nível recomendado, entregáveis detalhados e investimento sob medida para o seu momento.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center mb-8">
+        <a href="#" class="inline-flex items-center justify-center gap-3 bg-gradient-to-r from-primary to-[#b01030] text-white font-bold py-5 px-10 rounded-xl text-lg hover:scale-[1.02] transition-all" style="box-shadow: 0 0 40px rgba(194,34,53,0.6), 0 0 80px rgba(194,34,53,0.3);">
+          <span class="material-icons">calendar_today</span>
+          AGENDAR REUNIÃO CONSULTIVA
+        </a>
+        <a href="#" class="inline-flex items-center justify-center gap-3 border border-white/20 text-white font-semibold py-5 px-10 rounded-xl text-lg hover:bg-white/5 transition-all">
+          <span class="material-icons">chat</span>
+          FALAR COM UM CONSULTOR
+        </a>
+      </div>
+      <div class="flex flex-col sm:flex-row justify-center gap-6 text-sm text-gray-400">
+        <span class="flex items-center gap-2"><span class="material-icons text-primary text-sm">check</span> Análise gratuita do seu negócio</span>
+        <span class="flex items-center gap-2"><span class="material-icons text-primary text-sm">check</span> Plano personalizado com nível recomendado</span>
+        <span class="flex items-center gap-2"><span class="material-icons text-primary text-sm">check</span> Sem compromisso</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ FOOTER ═══════════════ -->
+  <footer class="bg-black border-t border-white/5 pt-20 pb-10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+        <div>
+          <a href="/" class="flex items-center gap-2 mb-4">
+            <img src="/images/blenduca-logo.svg" alt="Blenduca Logo" class="h-8" />
+          </a>
+          <p class="text-gray-500 text-sm font-light leading-relaxed mb-6">Transformando expertise em negócios escaláveis na era da Inteligência Artificial.</p>
+          <div class="flex items-center gap-4">
+            <a href="#" class="w-10 h-10 rounded-lg bg-white/5 flex items-center justify-center text-gray-500 hover:text-primary hover:bg-primary/10 transition-all" aria-label="LinkedIn"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg><span class="sr-only">LinkedIn</span></a>
+            <a href="#" class="w-10 h-10 rounded-lg bg-white/5 flex items-center justify-center text-gray-500 hover:text-primary hover:bg-primary/10 transition-all" aria-label="Instagram"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg><span class="sr-only">Instagram</span></a>
+            <a href="#" class="w-10 h-10 rounded-lg bg-white/5 flex items-center justify-center text-gray-500 hover:text-primary hover:bg-primary/10 transition-all" aria-label="YouTube"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg><span class="sr-only">YouTube</span></a>
+          </div>
+        </div>
+        <div>
+          <h4 class="text-white font-semibold mb-6 text-sm uppercase tracking-wider">Expert Hub</h4>
+          <ul class="space-y-3">
+            <li><a href="/" class="text-gray-500 hover:text-gray-300 text-sm font-light transition-colors">Página Principal</a></li>
+            <li><a href="index.html#metodo" class="text-gray-500 hover:text-gray-300 text-sm font-light transition-colors">Método B'Expert</a></li>
+            <li><a href="index.html#modelo-expert" class="text-gray-500 hover:text-gray-300 text-sm font-light transition-colors">Modelo EXPERT</a></li>
+            <li><a href="index.html#cases" class="text-gray-500 hover:text-gray-300 text-sm font-light transition-colors">Cases de Sucesso</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="text-white font-semibold mb-6 text-sm uppercase tracking-wider">Soluções</h4>
+          <ul class="space-y-3">
+            <li><a href="#" class="text-gray-500 hover:text-gray-300 text-sm font-light transition-colors">B'Experts (Aceleração)</a></li>
+            <li><a href="#" class="text-gray-500 hover:text-gray-300 text-sm font-light transition-colors">B'Tech (Tecnologia)</a></li>
+            <li><a href="#" class="text-gray-500 hover:text-gray-300 text-sm font-light transition-colors">B'Agents (IA)</a></li>
+            <li><a href="#" class="text-gray-500 hover:text-gray-300 text-sm font-light transition-colors">Calculador de Propostas</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="text-white font-semibold mb-6 text-sm uppercase tracking-wider">Contato</h4>
+          <ul class="space-y-3 mb-6">
+            <li class="flex items-center gap-2 text-gray-500 text-sm font-light"><span class="material-icons text-base text-gray-600">email</span>contato@blenduca.com</li>
+            <li class="flex items-start gap-2 text-gray-500 text-sm font-light"><span class="material-icons text-base text-gray-600 mt-0.5">location_on</span>São Paulo, SP — Brasil</li>
+          </ul>
+          <a href="https://planoexpert.blenduca.com.br/" class="inline-flex items-center gap-1 text-primary text-sm font-medium hover:text-primary-light transition-colors">Agendar Conversa <span class="material-icons text-sm">arrow_forward</span></a>
+        </div>
+      </div>
+      <div class="border-t border-white/5 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+        <p class="text-gray-600 text-xs font-light">&copy; 2025 Blenduca. Todos os direitos reservados.</p>
+        <div class="flex items-center gap-6">
+          <a href="#" class="text-gray-600 hover:text-gray-400 text-xs font-light transition-colors">Política de Privacidade</a>
+          <a href="#" class="text-gray-600 hover:text-gray-400 text-xs font-light transition-colors">Termos de Uso</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ═══════════════ JAVASCRIPT ═══════════════ -->
+  <script>
+    // Mobile Menu
+    var menuBtn = document.getElementById('menuBtn');
+    var closeMenuBtn = document.getElementById('closeMenuBtn');
+    var mobileMenu = document.getElementById('mobileMenu');
+    menuBtn.addEventListener('click', function() { mobileMenu.classList.add('open'); });
+    closeMenuBtn.addEventListener('click', function() { mobileMenu.classList.remove('open'); });
+    function closeMobile() { mobileMenu.classList.remove('open'); }
+    document.addEventListener('click', function(e) {
+      if (mobileMenu.classList.contains('open') && !mobileMenu.contains(e.target) && !menuBtn.contains(e.target)) { mobileMenu.classList.remove('open'); }
+    });
+
+    // Navbar scroll
+    var nav = document.querySelector('nav');
+    window.addEventListener('scroll', function() {
+      nav.style.borderBottomColor = window.scrollY > 50 ? 'rgba(255,255,255,0.1)' : 'rgba(255,255,255,0.05)';
+    });
+
+    // Accordion: Eixos
+    function toggleEixo(trigger) {
+      var item = trigger.closest('.eixo-item');
+      var content = item.querySelector('.eixo-content');
+      var chevron = item.querySelector('.eixo-chevron');
+      var isOpen = content.style.maxHeight !== '0px' && content.style.maxHeight !== '';
+      document.querySelectorAll('.eixo-content').forEach(function(c) { c.style.maxHeight = '0px'; });
+      document.querySelectorAll('.eixo-chevron').forEach(function(c) { c.classList.remove('rotate-180'); });
+      if (!isOpen || content.style.maxHeight === '0px') {
+        content.style.maxHeight = content.scrollHeight + 'px';
+        chevron.classList.add('rotate-180');
+      }
+    }
+
+    // Accordion: FAQ
+    function toggleFaq(trigger) {
+      var item = trigger.closest('.faq-item');
+      var content = item.querySelector('.faq-content');
+      var chevron = item.querySelector('.faq-chevron');
+      var isOpen = content.style.maxHeight !== '0px' && content.style.maxHeight !== '';
+      document.querySelectorAll('.faq-content').forEach(function(c) { c.style.maxHeight = '0px'; });
+      document.querySelectorAll('.faq-chevron').forEach(function(c) { c.classList.remove('rotate-180'); });
+      if (!isOpen || content.style.maxHeight === '0px') {
+        content.style.maxHeight = content.scrollHeight + 'px';
+        chevron.classList.add('rotate-180');
+      }
+    }
+  </script>
+</body>
+</html>
