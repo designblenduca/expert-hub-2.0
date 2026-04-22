@@ -281,7 +281,7 @@ export function Hero() {
         {/* LOGO */}
         <div className="mb-8 mt-24 animate-fade-in-down" style={{ width: 'clamp(200px, 40vw, 350px)' }}>
           <img
-            src="/images/expert-hub-logo.png"
+            src={`${import.meta.env.BASE_URL}images/expert-hub-logo.png`}
             alt="Expert Hub Logo"
             className="w-full h-auto drop-shadow-[0_0_15px_rgba(194,34,53,0.5)]"
           />
@@ -325,7 +325,7 @@ export function Hero() {
         {/* Video Player */}
         <div className="w-full max-w-3xl mx-auto mb-10 rounded-xl overflow-hidden shadow-[0_0_30px_rgba(194,34,53,0.2)] border border-white/10" style={{ animation: 'fadein 0.8s ease 0.7s both' }}>
           <VideoPlayer
-            src="/Vídeo Blenduca Atualizado.mp4"
+            src={`${import.meta.env.BASE_URL}Vídeo Blenduca Atualizado.mp4`}
             title="Blenduca Video"
           />
         </div>

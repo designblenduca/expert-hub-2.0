@@ -8,7 +8,7 @@ export default function Links() {
         {/* Hero Section - Full Width */}
         <div className="relative w-full">
           <img
-            src="/images/links/hero (3).png"
+            src={`${import.meta.env.BASE_URL}images/links/hero (3).png`}
             alt="Experts em Negócios de Conhecimento"
             className="w-full h-auto object-cover"
           />
@@ -29,15 +29,15 @@ export default function Links() {
           {/* Links / Banners Section */}
           <div className="w-full flex flex-col gap-8 mb-20">
             <a href="/" className="w-full transform transition-all hover:scale-[1.02] focus:scale-[1.02] outline-none rounded-[16px] overflow-hidden shadow-2xl hover:shadow-[0_0_30px_rgba(194,34,53,0.2)]">
-              <img src="/images/links/Link 5.png" alt="A Nova Era do Mercado Digital" className="w-full h-auto object-cover block" />
+              <img src={`${import.meta.env.BASE_URL}images/links/Link 5.png`} alt="A Nova Era do Mercado Digital" className="w-full h-auto object-cover block" />
             </a>
 
             <a href="https://planoexpert.blenduca.com.br/" className="w-full transform transition-all hover:scale-[1.02] focus:scale-[1.02] outline-none rounded-[16px] overflow-hidden shadow-2xl hover:shadow-[0_0_30px_rgba(194,34,53,0.2)]">
-              <img src="/images/links/Link 6.png" alt="Próximo Passo" className="w-full h-auto object-cover block" />
+              <img src={`${import.meta.env.BASE_URL}images/links/Link 6.png`} alt="Próximo Passo" className="w-full h-auto object-cover block" />
             </a>
 
             <a href="https://medium.com/@ricardo_werlang" className="w-full transform transition-all hover:scale-[1.02] focus:scale-[1.02] outline-none rounded-[16px] overflow-hidden shadow-2xl hover:shadow-[0_0_30px_rgba(194,34,53,0.2)]">
-              <img src="/images/links/Link 7.png" alt="Expert News" className="w-full h-auto object-cover block" />
+              <img src={`${import.meta.env.BASE_URL}images/links/Link 7.png`} alt="Expert News" className="w-full h-auto object-cover block" />
             </a>
           </div>
 

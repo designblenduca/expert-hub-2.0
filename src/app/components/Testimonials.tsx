@@ -10,7 +10,7 @@ const testimonials = [
     name: 'Samia Cruañes Dias',
     role: 'Consultoria e Treinamentos em Vendas',
     company: '',
-    thumb: '/images/samia.png',
+    thumb: `${import.meta.env.BASE_URL}images/samia.png`,
     quote: 'Meu negócio já existia e eu já tinha bons resultados, mas eu sabia que poderia ir além. Quando conheci a Blenduca, encontrei o método que me ajudou a organizar, estruturar e potencializar tudo o que eu já fazia.\n\nHoje entrego muito mais valor aos meus clientes e me sinto preparada para inovar constantemente.\n\nA Blenduca não ensina só metodologia, ela nos coloca na vanguarda, especialmente quando o assunto é inovação e inteligência artificial. Para quem atua com consultoria e mentoria, isso faz toda a diferença.',
   },
   {
@@ -18,7 +18,7 @@ const testimonials = [
     name: 'Ricardo Lazarotto',
     role: 'Fisioterapeuta Intervencionista em Dor',
     company: '',
-    thumb: '/images/ricardo.png',
+    thumb: `${import.meta.env.BASE_URL}images/ricardo.png`,
     quote: 'Como profissional da saúde, sempre estive focado nos atendimentos, mas percebi que poderia ir além: compartilhar o que sei para ajudar muito mais pessoas.\n\nAtravés da mentoria com Ricardo e Silviane, aprendi a estruturar a venda do meu conhecimento na internet e potencializar meus resultados. Hoje, não só atendo pacientes, eu ensino, compartilho e amplio meu impacto.',
   },
   {
@@ -26,7 +26,7 @@ const testimonials = [
     name: 'Sabina Deweik',
     role: 'Futurista, Caçadora de Tendências e Coach Ontológica',
     company: '',
-    thumb: '/images/sabina.png',
+    thumb: `${import.meta.env.BASE_URL}images/sabina.png`,
     quote: 'Após 25 anos com inovação e pesquisa, a Blenduca me trouxe um insight transformador: eu precisava sair da execução de tarefas burocráticas.\n\nAssumi o papel estratégico do meu próprio negócio, deleguei o operacional e hoje foco na criação e na construção de um modelo escalável.\n\nMeu conhecimento alcança o mundo sem depender da venda da minha hora. Essa mudança de chave foi libertadora.',
   },
   {
@@ -34,7 +34,7 @@ const testimonials = [
     name: 'Nicéia Fronza',
     role: 'Pontua Consultoria',
     company: '',
-    thumb: '/images/niceia.png',
+    thumb: `${import.meta.env.BASE_URL}images/niceia.png`,
     quote: 'Após cinco anos de empresa, eu sabia que precisava evoluir. O mercado mudou, as tecnologias avançaram e eu sentia que era hora de reposicionar meu negócio.\n\nA Blenduca trouxe, antes de tudo, uma mudança de mentalidade. Foi a virada de chave que me tirou do automático e me fez olhar para o meu negócio com novos olhos.\n\nA partir desse movimento, reformulei estratégias, incorporei novas tecnologias e comecei a construir um novo horizonte de crescimento.',
   },
 ];

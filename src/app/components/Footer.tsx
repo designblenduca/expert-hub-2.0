@@ -15,7 +15,7 @@ export function Footer() {
           <div className="flex flex-col items-start max-w-sm">
             <div className="w-[120px] h-auto mb-6">
               <img
-                src="/images/blenduca-logo.svg"
+                src={`${import.meta.env.BASE_URL}images/blenduca-logo.svg`}
                 alt="Blenduca Logo"
                 className="w-full h-auto object-contain"
               />

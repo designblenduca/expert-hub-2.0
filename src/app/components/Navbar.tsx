@@ -49,7 +49,7 @@ export function Navbar() {
           <div className="flex items-center gap-3 shrink-0 pl-2 lg:pl-6">
             <div className="w-[140px] shrink-0">
                <img 
-                  src="/images/blenduca-logo.svg" 
+                  src={`${import.meta.env.BASE_URL}images/blenduca-logo.svg`} 
                   alt="Blenduca Logo" 
                   className="w-full h-auto object-contain"
                />
