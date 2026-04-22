@@ -1,0 +1,1023 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>B'AGENT — Inteligência Artificial Personalizada | Expert Hub by Blenduca</title>
+  <meta name="description" content="Agentes de IA treinados com seu conhecimento, sua linguagem e seu método. Eles atendem, mentoram e vendem por você — no WhatsApp, na sua plataforma e no seu site." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: { inter: ['Inter', 'sans-serif'] },
+          colors: {
+            primary: { DEFAULT: '#6C3FC5', dark: '#5a34a3', light: '#845dd6' },
+            purple: {
+              300: '#9d7ce3', 400: '#845dd6', 500: '#6C3FC5', 600: '#5a34a3', 700: '#482a82'
+            },
+            'bg-dark': '#0a0a0a',
+            surface: '#141414',
+            'card-dark': '#1a1a1a',
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; background: #0a0a0a; color: #fff; overflow-x: hidden; }
+    ::selection { background: #6C3FC5; color: #fff; }
+    .glass-nav { background: rgba(10,10,10,0.7); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255,255,255,0.05); }
+    .glow-purple { box-shadow: 0 0 30px rgba(108,63,197,0.4); }
+    .glow-purple-sm { box-shadow: 0 0 20px rgba(108,63,197,0.3); }
+    .text-gradient-purple { background: linear-gradient(135deg, #6C3FC5, #845dd6); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+    .animate-float { animation: float 4s ease-in-out infinite; }
+    @keyframes float-delayed { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
+    .animate-float-delayed { animation: float-delayed 5s ease-in-out infinite; animation-delay: 1.5s; }
+    @keyframes typing { 0%, 80%, 100% { opacity: 0.3; transform: scale(0.8); } 40% { opacity: 1; transform: scale(1); } }
+    .typing-dot { animation: typing 1.4s infinite; }
+    .typing-dot:nth-child(2) { animation-delay: 0.2s; }
+    .typing-dot:nth-child(3) { animation-delay: 0.4s; }
+    .faq-content { transition: max-height 0.4s ease; overflow: hidden; }
+    .demo-panel { transition: opacity 0.3s ease, transform 0.3s ease; }
+    .mobile-menu { transform: translateX(100%); transition: transform 0.3s ease; }
+    .mobile-menu.open { transform: translateX(0); }
+  </style>
+</head>
+<body class="font-inter antialiased">
+
+  <!-- Neural Network SVG Background (reusable) -->
+  <svg id="neuralBg" class="fixed inset-0 w-full h-full opacity-[0.03] pointer-events-none z-0" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="5%" cy="10%" r="2" fill="#6C3FC5"/><circle cx="15%" cy="25%" r="1.5" fill="#6C3FC5"/><circle cx="28%" cy="8%" r="2" fill="#6C3FC5"/>
+    <circle cx="40%" cy="18%" r="1.5" fill="#6C3FC5"/><circle cx="55%" cy="5%" r="2" fill="#6C3FC5"/><circle cx="65%" cy="22%" r="1.5" fill="#6C3FC5"/>
+    <circle cx="78%" cy="12%" r="2" fill="#6C3FC5"/><circle cx="88%" cy="28%" r="1.5" fill="#6C3FC5"/><circle cx="95%" cy="8%" r="2" fill="#6C3FC5"/>
+    <circle cx="10%" cy="45%" r="1.5" fill="#6C3FC5"/><circle cx="25%" cy="55%" r="2" fill="#6C3FC5"/><circle cx="42%" cy="40%" r="1.5" fill="#6C3FC5"/>
+    <circle cx="58%" cy="50%" r="2" fill="#6C3FC5"/><circle cx="72%" cy="42%" r="1.5" fill="#6C3FC5"/><circle cx="85%" cy="55%" r="2" fill="#6C3FC5"/>
+    <circle cx="8%" cy="70%" r="2" fill="#6C3FC5"/><circle cx="22%" cy="80%" r="1.5" fill="#6C3FC5"/><circle cx="35%" cy="72%" r="2" fill="#6C3FC5"/>
+    <circle cx="50%" cy="85%" r="1.5" fill="#6C3FC5"/><circle cx="68%" cy="75%" r="2" fill="#6C3FC5"/><circle cx="80%" cy="88%" r="1.5" fill="#6C3FC5"/>
+    <circle cx="92%" cy="70%" r="2" fill="#6C3FC5"/>
+    <line x1="5%" y1="10%" x2="15%" y2="25%" stroke="#6C3FC5" stroke-width="0.5"/><line x1="15%" y1="25%" x2="28%" y2="8%" stroke="#6C3FC5" stroke-width="0.5"/>
+    <line x1="28%" y1="8%" x2="40%" y2="18%" stroke="#6C3FC5" stroke-width="0.5"/><line x1="40%" y1="18%" x2="55%" y2="5%" stroke="#6C3FC5" stroke-width="0.5"/>
+    <line x1="55%" y1="5%" x2="65%" y2="22%" stroke="#6C3FC5" stroke-width="0.5"/><line x1="65%" y1="22%" x2="78%" y2="12%" stroke="#6C3FC5" stroke-width="0.5"/>
+    <line x1="78%" y1="12%" x2="88%" y2="28%" stroke="#6C3FC5" stroke-width="0.5"/><line x1="88%" y1="28%" x2="95%" y2="8%" stroke="#6C3FC5" stroke-width="0.5"/>
+    <line x1="10%" y1="45%" x2="25%" y2="55%" stroke="#6C3FC5" stroke-width="0.5"/><line x1="25%" y1="55%" x2="42%" y2="40%" stroke="#6C3FC5" stroke-width="0.5"/>
+    <line x1="42%" y1="40%" x2="58%" y2="50%" stroke="#6C3FC5" stroke-width="0.5"/><line x1="58%" y1="50%" x2="72%" y2="42%" stroke="#6C3FC5" stroke-width="0.5"/>
+    <line x1="72%" y1="42%" x2="85%" y2="55%" stroke="#6C3FC5" stroke-width="0.5"/>
+    <line x1="8%" y1="70%" x2="22%" y2="80%" stroke="#6C3FC5" stroke-width="0.5"/><line x1="22%" y1="80%" x2="35%" y2="72%" stroke="#6C3FC5" stroke-width="0.5"/>
+    <line x1="35%" y1="72%" x2="50%" y2="85%" stroke="#6C3FC5" stroke-width="0.5"/><line x1="50%" y1="85%" x2="68%" y2="75%" stroke="#6C3FC5" stroke-width="0.5"/>
+    <line x1="68%" y1="75%" x2="80%" y2="88%" stroke="#6C3FC5" stroke-width="0.5"/><line x1="80%" y1="88%" x2="92%" y2="70%" stroke="#6C3FC5" stroke-width="0.5"/>
+    <line x1="15%" y1="25%" x2="10%" y2="45%" stroke="#6C3FC5" stroke-width="0.3"/><line x1="42%" y1="40%" x2="40%" y2="18%" stroke="#6C3FC5" stroke-width="0.3"/>
+    <line x1="72%" y1="42%" x2="78%" y2="12%" stroke="#6C3FC5" stroke-width="0.3"/><line x1="25%" y1="55%" x2="22%" y2="80%" stroke="#6C3FC5" stroke-width="0.3"/>
+    <line x1="58%" y1="50%" x2="68%" y2="75%" stroke="#6C3FC5" stroke-width="0.3"/><line x1="85%" y1="55%" x2="92%" y2="70%" stroke="#6C3FC5" stroke-width="0.3"/>
+  </svg>
+
+  <!-- ═══════════════════════════════════ FOLD 0: NAVBAR ═══════════════════════════════════ -->
+  <nav class="fixed top-0 left-0 w-full z-50 glass-nav">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-20">
+        <div class="flex items-center gap-4">
+          <a href="/" class="flex items-center gap-2">
+            <img src="/images/b-agent-logo.svg" alt="B'Agent Logo" class="h-8" />
+          </a>
+        </div>
+        <div class="hidden md:flex items-center gap-8">
+          <a href="/" class="text-sm text-gray-400 hover:text-white transition-colors flex items-center gap-1">
+            <span class="material-icons text-xs">arrow_back</span>
+            Voltar ao Hub
+          </a>
+          <a href="#agentes" class="text-sm text-gray-300 hover:text-white transition-colors">Agentes</a>
+          <a href="#em-acao" class="text-sm text-gray-300 hover:text-white transition-colors">Demo</a>
+          <a href="#central" class="text-sm text-gray-300 hover:text-white transition-colors">Central IA</a>
+          <a href="#faq" class="text-sm text-gray-300 hover:text-white transition-colors">FAQ</a>
+          <a href="https://planoexpert.blenduca.com.br/" class="bg-purple-600 hover:bg-purple-700 text-white font-bold text-sm py-2.5 px-6 rounded-lg shadow-[0_0_20px_-5px_rgba(108,63,197,0.4)] transition-all">
+            QUERO MEUS AGENTES →
+          </a>
+        </div>
+        <button id="menuBtn" class="md:hidden text-white"><span class="material-icons text-3xl">menu</span></button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div id="mobileMenu" class="mobile-menu fixed top-0 right-0 w-72 h-full bg-[#0a0a0a]/95 backdrop-blur-xl z-[60] border-l border-white/5 p-8">
+    <button id="closeMenuBtn" class="absolute top-6 right-6 text-gray-400 hover:text-white"><span class="material-icons text-2xl">close</span></button>
+    <div class="flex flex-col gap-6 mt-16">
+      <a href="/" class="text-gray-400 hover:text-white text-sm flex items-center gap-2"><span class="material-icons text-xs">arrow_back</span> Voltar ao Hub</a>
+      <a href="#agentes" class="text-gray-300 hover:text-white text-sm" onclick="document.getElementById('mobileMenu').classList.remove('open')">Agentes</a>
+      <a href="#em-acao" class="text-gray-300 hover:text-white text-sm" onclick="document.getElementById('mobileMenu').classList.remove('open')">Demo</a>
+      <a href="#central" class="text-gray-300 hover:text-white text-sm" onclick="document.getElementById('mobileMenu').classList.remove('open')">Central IA</a>
+      <a href="#faq" class="text-gray-300 hover:text-white text-sm" onclick="document.getElementById('mobileMenu').classList.remove('open')">FAQ</a>
+      <a href="https://planoexpert.blenduca.com.br/" class="mt-4 bg-purple-600 text-white font-bold text-sm py-3 px-6 rounded-lg text-center" onclick="document.getElementById('mobileMenu').classList.remove('open')">QUERO MEUS AGENTES →</a>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════ FOLD 1: HERO ═══════════════════════════════════ -->
+  <section id="hero" class="relative min-h-screen flex items-center pt-20 overflow-hidden">
+    <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(108,63,197,0.08),transparent_60%)]"></div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full py-16 lg:py-0">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+
+        <!-- Left Column -->
+        <div>
+          <span class="inline-block text-purple-400 font-semibold tracking-[0.2em] uppercase text-xs mb-6 border border-purple-500/30 bg-purple-500/10 px-3 py-1 rounded-full">Inteligência Artificial</span>
+          <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black text-white tracking-tight leading-[1.1] mb-6">
+            Sua Expertise.<br><span class="text-gradient-purple">Multiplicada por IA.</span><br>Disponível 24/7.
+          </h1>
+          <p class="text-gray-400 text-lg lg:text-xl font-light leading-relaxed mb-8 max-w-lg">
+            Agentes de inteligência artificial treinados com seu conhecimento, sua linguagem e seu método. Eles atendem, mentoram e vendem por você — no WhatsApp, na sua plataforma e no seu site. <strong class="text-gray-300 font-medium">Sem parar.</strong>
+          </p>
+          <div class="flex flex-col sm:flex-row gap-4 mb-10">
+            <a href="https://planoexpert.blenduca.com.br/" class="inline-flex items-center justify-center gap-2 bg-purple-600 hover:bg-purple-700 text-white font-bold py-4 px-8 rounded-xl shadow-[0_0_30px_-5px_rgba(108,63,197,0.5)] transition-all hover:scale-[1.02] text-sm uppercase tracking-wider">
+              Quero Meus Agentes
+              <span class="material-icons text-lg">arrow_forward</span>
+            </a>
+            <a href="#em-acao" class="inline-flex items-center justify-center gap-2 border border-white/10 hover:border-purple-500/40 text-gray-300 hover:text-white font-medium py-4 px-8 rounded-xl transition-all text-sm">
+              <span class="material-icons text-lg">expand_more</span>
+              Ver os agentes em ação
+            </a>
+          </div>
+          <div class="flex flex-wrap gap-x-6 gap-y-2 text-xs text-gray-500">
+            <span class="flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-purple-500"></span> 3 tipos de agentes</span>
+            <span class="flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-purple-500"></span> Treinados com seu DNA</span>
+            <span class="flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-purple-500"></span> WhatsApp nativo</span>
+            <span class="flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-purple-500"></span> Operando em +50 negócios</span>
+          </div>
+        </div>
+
+        <!-- Right Column: WhatsApp Chat Simulation -->
+        <div class="relative max-w-[380px] mx-auto lg:mx-0 lg:ml-auto">
+          <div class="absolute inset-0 bg-purple-500/10 blur-[60px] rounded-full pointer-events-none"></div>
+          <div class="relative bg-[#0b0b0b] border border-white/[0.08] rounded-2xl overflow-hidden shadow-[0_20px_80px_-20px_rgba(108,63,197,0.2)]">
+            <!-- Chat Header -->
+            <div class="flex items-center gap-3 px-4 py-3 bg-[#111] border-b border-white/5">
+              <div class="relative">
+                <div class="w-10 h-10 rounded-full bg-purple-500/20 flex items-center justify-center"><span class="material-icons text-purple-400 text-lg">smart_toy</span></div>
+                <span class="absolute bottom-0 right-0 w-2.5 h-2.5 rounded-full bg-emerald-400 border-2 border-[#111]"></span>
+              </div>
+              <div>
+                <span class="text-white font-bold text-sm block">Seu Expert · Clone A.I</span>
+                <span class="text-emerald-400 text-[10px] font-medium">Online agora</span>
+              </div>
+              <div class="ml-auto"><span class="text-[9px] text-purple-400/60 bg-purple-500/10 px-2 py-0.5 rounded font-bold uppercase tracking-wider">IA</span></div>
+            </div>
+            <!-- Chat Messages -->
+            <div class="p-4 space-y-3 min-h-[320px]">
+              <div class="flex justify-end">
+                <div class="bg-purple-600/20 border border-purple-500/20 rounded-2xl rounded-tr-sm px-4 py-2.5 max-w-[75%]">
+                  <p class="text-white text-sm">Oi! Vi seu conteúdo sobre escalar mentorias. Quero saber mais sobre o método.</p>
+                  <span class="text-gray-500 text-[9px] block text-right mt-1">14:23</span>
+                </div>
+              </div>
+              <div class="flex justify-start">
+                <div class="bg-[#1a1a1a] border border-white/5 rounded-2xl rounded-tl-sm px-4 py-2.5 max-w-[80%]">
+                  <p class="text-gray-200 text-sm">Que bom que chegou até aqui! 🙌</p>
+                  <p class="text-gray-200 text-sm mt-1.5">O método funciona em 4 fases: primeiro estruturamos seu modelo de receita, depois construímos a máquina de aquisição. Em qual fase você sente que tá travado?</p>
+                  <span class="text-gray-600 text-[9px] block mt-1">14:23 · <span class="text-purple-400/60">Clone A.I</span></span>
+                </div>
+              </div>
+              <div class="flex justify-end">
+                <div class="bg-purple-600/20 border border-purple-500/20 rounded-2xl rounded-tr-sm px-4 py-2.5 max-w-[75%]">
+                  <p class="text-white text-sm">Na parte de escalar sem depender de mim nas sessões. Faço tudo 1:1 ainda.</p>
+                  <span class="text-gray-500 text-[9px] block text-right mt-1">14:24</span>
+                </div>
+              </div>
+              <div class="flex justify-start">
+                <div class="bg-[#1a1a1a] border border-white/5 rounded-2xl rounded-tl-sm px-4 py-2.5 max-w-[80%]">
+                  <p class="text-gray-200 text-sm">Esse é exatamente o gargalo da fase 1. Antes de sair do 1:1, você precisa empacotar seu método proprietário.</p>
+                  <p class="text-gray-200 text-sm mt-1.5">Quer que eu te mande um diagnóstico rápido pra entender seu momento? Leva 2 minutos. 👇</p>
+                  <span class="text-gray-600 text-[9px] block mt-1">14:24 · <span class="text-purple-400/60">Clone A.I</span></span>
+                </div>
+              </div>
+              <div class="flex justify-start">
+                <div class="bg-purple-600/30 border border-purple-500/30 rounded-xl px-4 py-2.5 cursor-pointer hover:bg-purple-600/40 transition-colors">
+                  <span class="text-purple-300 text-sm font-medium flex items-center gap-2"><span class="material-icons text-sm">assignment</span>Fazer meu diagnóstico →</span>
+                </div>
+              </div>
+            </div>
+            <!-- Chat Input -->
+            <div class="flex items-center gap-2 px-4 py-3 border-t border-white/5 bg-[#0d0d0d]">
+              <div class="flex-1 bg-white/5 rounded-full px-4 py-2"><span class="text-gray-600 text-sm">Digite uma mensagem...</span></div>
+              <div class="w-9 h-9 rounded-full bg-purple-600 flex items-center justify-center"><span class="material-icons text-white text-sm">send</span></div>
+            </div>
+          </div>
+          <div class="text-center mt-4"><span class="text-[10px] text-gray-600 uppercase tracking-wider">Conversa real simulada · Clone treinado com a expertise do mentor</span></div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════ FOLD 2: A VISÃO ═══════════════════════════════════ -->
+  <section id="visao" class="relative py-24 lg:py-32 overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="text-center mb-12">
+        <span class="inline-block text-purple-400 font-semibold tracking-[0.2em] uppercase text-xs mb-3 border border-purple-500/30 bg-purple-500/10 px-3 py-1 rounded-full">A Visão</span>
+        <h2 class="text-4xl md:text-5xl font-extrabold text-white mb-6 tracking-tight">E Se Você Tivesse uma Equipe que <span class="text-gradient-purple">Nunca Para</span>?</h2>
+      </div>
+
+      <div class="max-w-3xl mx-auto mb-16">
+        <p class="text-gray-400 text-lg font-light leading-relaxed text-center">
+          Imagine um cenário: <strong class="text-gray-200 font-medium">enquanto você dorme</strong>, seu Clone A.I responde dúvidas de leads no WhatsApp com o seu tom de voz e seu conhecimento técnico. <strong class="text-gray-200 font-medium">Enquanto você mentora um grupo</strong>, seu Mentor A.I acompanha os alunos que pararam de implementar e reativa cada um com mensagens personalizadas. <strong class="text-gray-200 font-medium">Enquanto você cria conteúdo</strong>, seu Comercial A.I qualifica leads, agenda reuniões e fecha vendas no piloto automático. <span class="text-white font-semibold">Não é ficção. São agentes reais, operando em negócios reais, todos os dias.</span>
+        </p>
+      </div>
+
+      <!-- 3 Crachás de Equipe -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="group text-center p-8 bg-gradient-to-b from-[#141418] to-[#0a0a0a] border border-white/[0.06] rounded-2xl hover:border-purple-500/30 transition-all duration-300 hover:-translate-y-1">
+          <div class="w-20 h-20 mx-auto rounded-2xl bg-gradient-to-br from-purple-500/20 to-fuchsia-500/10 border border-purple-500/20 flex items-center justify-center mb-4 group-hover:shadow-[0_0_30px_rgba(108,63,197,0.2)] transition-shadow">
+            <span class="material-icons text-purple-400 text-4xl">face</span>
+          </div>
+          <h3 class="text-white font-black text-xl mb-1">Clone A.I</h3>
+          <p class="text-purple-400/80 text-sm font-medium mb-3">Atendimento & Interação</p>
+          <p class="text-gray-500 text-xs leading-relaxed">Seu clone digital que conversa com leads e clientes no WhatsApp usando seu conhecimento e tom de voz.</p>
+        </div>
+        <div class="group text-center p-8 bg-gradient-to-b from-[#141418] to-[#0a0a0a] border border-white/[0.06] rounded-2xl hover:border-purple-500/30 transition-all duration-300 hover:-translate-y-1">
+          <div class="w-20 h-20 mx-auto rounded-2xl bg-gradient-to-br from-purple-500/20 to-fuchsia-500/10 border border-purple-500/20 flex items-center justify-center mb-4 group-hover:shadow-[0_0_30px_rgba(108,63,197,0.2)] transition-shadow">
+            <span class="material-icons text-purple-400 text-4xl">school</span>
+          </div>
+          <h3 class="text-white font-black text-xl mb-1">Mentor A.I</h3>
+          <p class="text-purple-400/80 text-sm font-medium mb-3">Acompanhamento & Reativação</p>
+          <p class="text-gray-500 text-xs leading-relaxed">Sistema de mentoria ativa que acompanha alunos, indica conteúdos e envia mensagens personalizadas via Meta.</p>
+        </div>
+        <div class="group text-center p-8 bg-gradient-to-b from-[#141418] to-[#0a0a0a] border border-white/[0.06] rounded-2xl hover:border-purple-500/30 transition-all duration-300 hover:-translate-y-1">
+          <div class="w-20 h-20 mx-auto rounded-2xl bg-gradient-to-br from-purple-500/20 to-fuchsia-500/10 border border-purple-500/20 flex items-center justify-center mb-4 group-hover:shadow-[0_0_30px_rgba(108,63,197,0.2)] transition-shadow">
+            <span class="material-icons text-purple-400 text-4xl">storefront</span>
+          </div>
+          <h3 class="text-white font-black text-xl mb-1">Comercial A.I</h3>
+          <p class="text-purple-400/80 text-sm font-medium mb-3">Qualificação & Vendas</p>
+          <p class="text-gray-500 text-xs leading-relaxed">Agente comercial completo com gestão de leads, agendamentos e redirecionamento inteligente.</p>
+        </div>
+      </div>
+
+      <p class="text-center mt-10 text-gray-500 text-sm font-light">Sua equipe de IA. <span class="text-purple-400 font-semibold">Sob medida.</span></p>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════ FOLD 3: OS 3 AGENTES ═══════════════════════════════════ -->
+  <section id="agentes" class="relative py-24 lg:py-32 bg-[#050505] overflow-hidden">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="text-center mb-16">
+        <span class="inline-block text-purple-400 font-semibold tracking-[0.2em] uppercase text-xs mb-3 border border-purple-500/30 bg-purple-500/10 px-3 py-1 rounded-full">Conheça os Agentes</span>
+        <h2 class="text-4xl md:text-5xl font-extrabold text-white mb-4 tracking-tight">Três Agentes. Três Missões.<br>Um Único Objetivo: <span class="text-gradient-purple">Escalar Você</span>.</h2>
+        <p class="text-gray-400 max-w-2xl mx-auto text-lg">Cada agente é treinado com seu DNA, opera nos seus canais e reporta resultados no seu dashboard.</p>
+      </div>
+
+      <div class="space-y-8">
+
+        <!-- CLONE A.I -->
+        <div class="bg-gradient-to-b from-[#0e0e12] to-[#0a0a0a] border border-purple-500/10 rounded-3xl overflow-hidden">
+          <div class="h-1 bg-gradient-to-r from-purple-400 via-fuchsia-400 to-pink-400/40"></div>
+          <div class="p-8 md:p-12 lg:p-16">
+            <div class="grid grid-cols-1 lg:grid-cols-5 gap-10">
+              <div class="lg:col-span-3">
+                <div class="flex items-center gap-4 mb-6">
+                  <div class="w-14 h-14 rounded-2xl bg-purple-500/15 flex items-center justify-center"><span class="material-icons text-purple-400 text-3xl">face</span></div>
+                  <div>
+                    <h3 class="text-3xl font-black text-white tracking-tight">Clone A.I</h3>
+                    <p class="text-purple-400/80 font-semibold text-sm">Seu Clone Digital para Interação com Clientes</p>
+                  </div>
+                </div>
+                <p class="text-gray-400 leading-relaxed mb-8">Seu clone digital de IA, treinado com sua linguagem, seus padrões de comunicação e seu conhecimento técnico. Ele conversa com leads e clientes no WhatsApp como se fosse você — 24 horas, 7 dias por semana.</p>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-6">
+                  <div class="flex items-start gap-3 p-3 bg-white/[0.02] border border-white/5 rounded-lg">
+                    <span class="material-icons text-purple-400 text-sm mt-0.5">fingerprint</span>
+                    <div><span class="text-white font-bold text-xs block">Extração de DNA</span><span class="text-gray-500 text-[10px]">Captura do seu tom, vocabulário e método</span></div>
+                  </div>
+                  <div class="flex items-start gap-3 p-3 bg-white/[0.02] border border-white/5 rounded-lg">
+                    <span class="material-icons text-purple-400 text-sm mt-0.5">pattern</span>
+                    <div><span class="text-white font-bold text-xs block">Padrões Linguísticos</span><span class="text-gray-500 text-[10px]">Análise dos seus conteúdos e textos</span></div>
+                  </div>
+                  <div class="flex items-start gap-3 p-3 bg-white/[0.02] border border-white/5 rounded-lg">
+                    <span class="material-icons text-purple-400 text-sm mt-0.5">build_circle</span>
+                    <div><span class="text-white font-bold text-xs block">Criação do Clone</span><span class="text-gray-500 text-[10px]">Treinamento com validação conjunta</span></div>
+                  </div>
+                  <div class="flex items-start gap-3 p-3 bg-white/[0.02] border border-white/5 rounded-lg">
+                    <span class="material-icons text-purple-400 text-sm mt-0.5">chat</span>
+                    <div><span class="text-white font-bold text-xs block">WhatsApp Nativo</span><span class="text-gray-500 text-[10px]">API oficial da Meta Business</span></div>
+                  </div>
+                </div>
+                <div class="flex flex-wrap gap-2 mb-4">
+                  <span class="inline-flex items-center gap-1.5 text-[10px] text-purple-300 bg-purple-500/10 border border-purple-500/15 px-2.5 py-1 rounded-full font-medium"><span class="material-icons text-[10px]">check</span> WhatsApp</span>
+                  <span class="inline-flex items-center gap-1.5 text-[10px] text-purple-300 bg-purple-500/10 border border-purple-500/15 px-2.5 py-1 rounded-full font-medium"><span class="material-icons text-[10px]">check</span> Chat do Site</span>
+                  <span class="inline-flex items-center gap-1.5 text-[10px] text-purple-300 bg-purple-500/10 border border-purple-500/15 px-2.5 py-1 rounded-full font-medium"><span class="material-icons text-[10px]">check</span> DM Instagram</span>
+                </div>
+                <p class="text-[11px] text-gray-600 italic">Ideal para: experts que recebem muitas mensagens e perdem leads por não conseguir responder a tempo.</p>
+              </div>
+              <div class="lg:col-span-2 flex items-center justify-center">
+                <div class="w-full max-w-[280px] bg-[#0d0d0d] border border-white/5 rounded-xl p-4 space-y-2.5">
+                  <div class="flex items-center gap-2 mb-3"><div class="w-6 h-6 rounded-full bg-purple-500/20 flex items-center justify-center"><span class="material-icons text-purple-400 text-xs">smart_toy</span></div><span class="text-[10px] text-gray-400 font-medium">Clone A.I · WhatsApp</span></div>
+                  <div class="bg-white/[0.03] rounded-xl rounded-tl-sm px-3 py-2"><p class="text-gray-300 text-[11px]">Oi! Que bom que chegou aqui. Em que posso te ajudar? 🙌</p></div>
+                  <div class="bg-purple-600/15 rounded-xl rounded-tr-sm px-3 py-2 ml-auto max-w-[80%]"><p class="text-gray-200 text-[11px]">Quero saber sobre o método...</p></div>
+                  <div class="bg-white/[0.03] rounded-xl rounded-tl-sm px-3 py-2"><p class="text-gray-300 text-[11px]">Claro! O método tem 4 fases. Em qual delas você sente que tá travado?</p></div>
+                  <div class="flex justify-center mt-2"><span class="text-[9px] text-gray-600 italic">Respondido em 3 segundos</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- MENTOR A.I -->
+        <div class="bg-gradient-to-b from-[#0e0e12] to-[#0a0a0a] border border-purple-500/10 rounded-3xl overflow-hidden">
+          <div class="h-1 bg-gradient-to-r from-purple-500 via-fuchsia-500 to-purple-400/40"></div>
+          <div class="p-8 md:p-12 lg:p-16">
+            <div class="grid grid-cols-1 lg:grid-cols-5 gap-10">
+              <div class="lg:col-span-3">
+                <div class="flex items-center gap-4 mb-6">
+                  <div class="w-14 h-14 rounded-2xl bg-purple-500/15 flex items-center justify-center"><span class="material-icons text-purple-400 text-3xl">school</span></div>
+                  <div>
+                    <h3 class="text-3xl font-black text-white tracking-tight">Mentor A.I</h3>
+                    <p class="text-purple-400/80 font-semibold text-sm">Sistema de Mentoria Ativa com IA Conversacional</p>
+                  </div>
+                </div>
+                <p class="text-gray-400 leading-relaxed mb-8">Tudo que o Clone A.I faz, mais: acompanhamento ativo dos seus alunos e mentorados. O Mentor A.I monitora progresso, identifica quem parou de implementar, envia mensagens de reativação personalizadas e indica trilhas relevantes — tudo de forma proativa.</p>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-6">
+                  <div class="flex items-start gap-3 p-3 bg-white/[0.02] border border-white/5 rounded-lg">
+                    <span class="material-icons text-purple-400 text-sm mt-0.5">check_circle</span>
+                    <div><span class="text-white font-bold text-xs block">Tudo do Clone A.I</span><span class="text-gray-500 text-[10px]">DNA, padrões, WhatsApp nativo</span></div>
+                  </div>
+                  <div class="flex items-start gap-3 p-3 bg-white/[0.02] border border-white/5 rounded-lg">
+                    <span class="material-icons text-purple-400 text-sm mt-0.5">recommend</span>
+                    <div><span class="text-white font-bold text-xs block">Indicação de Conteúdos</span><span class="text-gray-500 text-[10px]">Sugere trilhas e ferramentas relevantes</span></div>
+                  </div>
+                  <div class="flex items-start gap-3 p-3 bg-white/[0.02] border border-white/5 rounded-lg">
+                    <span class="material-icons text-purple-400 text-sm mt-0.5">route</span>
+                    <div><span class="text-white font-bold text-xs block">Fluxo de Acompanhamento</span><span class="text-gray-500 text-[10px]">Jornada adaptativa por perfil</span></div>
+                  </div>
+                  <div class="flex items-start gap-3 p-3 bg-white/[0.02] border border-white/5 rounded-lg">
+                    <span class="material-icons text-purple-400 text-sm mt-0.5">send</span>
+                    <div><span class="text-white font-bold text-xs block">Envio Ativo via Meta</span><span class="text-gray-500 text-[10px]">Mensagens proativas, não só reativas</span></div>
+                  </div>
+                </div>
+                <div class="flex flex-wrap gap-2 mb-4">
+                  <span class="inline-flex items-center gap-1.5 text-[10px] text-purple-300 bg-purple-500/10 border border-purple-500/15 px-2.5 py-1 rounded-full font-medium"><span class="material-icons text-[10px]">check</span> Tudo do Clone</span>
+                  <span class="inline-flex items-center gap-1.5 text-[10px] text-purple-300 bg-purple-500/10 border border-purple-500/15 px-2.5 py-1 rounded-full font-medium"><span class="material-icons text-[10px]">check</span> Experience Flix</span>
+                  <span class="inline-flex items-center gap-1.5 text-[10px] text-purple-300 bg-purple-500/10 border border-purple-500/15 px-2.5 py-1 rounded-full font-medium"><span class="material-icons text-[10px]">check</span> Mensagens Proativas</span>
+                </div>
+                <p class="text-[11px] text-gray-600 italic">Ideal para: mentores com programas em grupo que não conseguem acompanhar individualmente cada aluno.</p>
+              </div>
+              <div class="lg:col-span-2 flex items-center justify-center">
+                <div class="w-full max-w-[280px] bg-[#0d0d0d] border border-white/5 rounded-xl p-4 space-y-2.5">
+                  <div class="flex items-center gap-2 mb-3"><div class="w-6 h-6 rounded-full bg-purple-500/20 flex items-center justify-center"><span class="material-icons text-purple-400 text-xs">school</span></div><span class="text-[10px] text-gray-400 font-medium">Mentor A.I · Proativo</span></div>
+                  <div class="bg-white/[0.03] rounded-xl rounded-tl-sm px-3 py-2"><p class="text-gray-300 text-[11px]">Oi Maria! Percebi que você parou no módulo 3. Geralmente é onde bate aquela dúvida sobre posicionamento — é isso?</p></div>
+                  <div class="bg-purple-600/15 rounded-xl rounded-tr-sm px-3 py-2 ml-auto max-w-[80%]"><p class="text-gray-200 text-[11px]">Sim! Travei no exercício de nicho...</p></div>
+                  <div class="bg-white/[0.03] rounded-xl rounded-tl-sm px-3 py-2"><p class="text-gray-300 text-[11px]">Normal! Vou te mandar um material complementar que resolve isso. 📎</p></div>
+                  <div class="flex justify-center mt-2"><span class="text-[9px] text-gray-600 italic">Aluno reativado automaticamente</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- COMERCIAL A.I -->
+        <div class="bg-gradient-to-b from-[#0e0e12] to-[#0a0a0a] border border-purple-500/10 rounded-3xl overflow-hidden">
+          <div class="h-1 bg-gradient-to-r from-purple-600 via-violet-500 to-fuchsia-500/40"></div>
+          <div class="p-8 md:p-12 lg:p-16">
+            <div class="grid grid-cols-1 lg:grid-cols-5 gap-10">
+              <div class="lg:col-span-3">
+                <div class="flex items-center gap-4 mb-6">
+                  <div class="w-14 h-14 rounded-2xl bg-purple-500/15 flex items-center justify-center"><span class="material-icons text-purple-400 text-3xl">storefront</span></div>
+                  <div>
+                    <h3 class="text-3xl font-black text-white tracking-tight">Comercial A.I</h3>
+                    <p class="text-purple-400/80 font-semibold text-sm">Agente Comercial Completo com Gestão de Leads e Vendas</p>
+                  </div>
+                </div>
+                <p class="text-gray-400 leading-relaxed mb-8">Seu departamento comercial automatizado. O Comercial A.I qualifica leads, identifica nível de interesse, agenda reuniões, gerencia follow-ups e redireciona contatos de forma inteligente. Com base de conhecimento personalizada e IA conversacional avançada.</p>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-6">
+                  <div class="flex items-start gap-3 p-3 bg-white/[0.02] border border-white/5 rounded-lg">
+                    <span class="material-icons text-purple-400 text-sm mt-0.5">psychology</span>
+                    <div><span class="text-white font-bold text-xs block">IA Conversacional Avançada</span><span class="text-gray-500 text-[10px]">Vendas consultivas com objeções</span></div>
+                  </div>
+                  <div class="flex items-start gap-3 p-3 bg-white/[0.02] border border-white/5 rounded-lg">
+                    <span class="material-icons text-purple-400 text-sm mt-0.5">menu_book</span>
+                    <div><span class="text-white font-bold text-xs block">Base de Conhecimento</span><span class="text-gray-500 text-[10px]">Método, produtos, objeções frequentes</span></div>
+                  </div>
+                  <div class="flex items-start gap-3 p-3 bg-white/[0.02] border border-white/5 rounded-lg">
+                    <span class="material-icons text-purple-400 text-sm mt-0.5">calendar_month</span>
+                    <div><span class="text-white font-bold text-xs block">Gestão de Agendamentos</span><span class="text-gray-500 text-[10px]">Integrado ao seu calendário</span></div>
+                  </div>
+                  <div class="flex items-start gap-3 p-3 bg-white/[0.02] border border-white/5 rounded-lg">
+                    <span class="material-icons text-purple-400 text-sm mt-0.5">alt_route</span>
+                    <div><span class="text-white font-bold text-xs block">Redirecionamento Inteligente</span><span class="text-gray-500 text-[10px]">Perfil → funil/oferta/humano certo</span></div>
+                  </div>
+                  <div class="flex items-start gap-3 p-3 bg-white/[0.02] border border-white/5 rounded-lg col-span-1 sm:col-span-2">
+                    <span class="material-icons text-purple-400 text-sm mt-0.5">bar_chart</span>
+                    <div><span class="text-white font-bold text-xs block">Dashboard de Performance</span><span class="text-gray-500 text-[10px]">Conversão, volume, leads qualificados e agendamentos em tempo real</span></div>
+                  </div>
+                </div>
+                <div class="flex flex-wrap gap-2 mb-4">
+                  <span class="inline-flex items-center gap-1.5 text-[10px] text-purple-300 bg-purple-500/10 border border-purple-500/15 px-2.5 py-1 rounded-full font-medium"><span class="material-icons text-[10px]">check</span> Tudo do Mentor</span>
+                  <span class="inline-flex items-center gap-1.5 text-[10px] text-purple-300 bg-purple-500/10 border border-purple-500/15 px-2.5 py-1 rounded-full font-medium"><span class="material-icons text-[10px]">check</span> CRM & Calendário</span>
+                  <span class="inline-flex items-center gap-1.5 text-[10px] text-purple-300 bg-purple-500/10 border border-purple-500/15 px-2.5 py-1 rounded-full font-medium"><span class="material-icons text-[10px]">check</span> Funnel Pages</span>
+                  <span class="inline-flex items-center gap-1.5 text-[10px] text-purple-300 bg-purple-500/10 border border-purple-500/15 px-2.5 py-1 rounded-full font-medium"><span class="material-icons text-[10px]">check</span> Outbound (add-on)</span>
+                </div>
+                <div class="flex flex-wrap gap-2 mb-4">
+                  <span class="text-[10px] text-gray-500 bg-white/[0.02] border border-white/5 px-2.5 py-1 rounded-full">Add-on: Integrações ERP/CRM</span>
+                  <span class="text-[10px] text-gray-500 bg-white/[0.02] border border-white/5 px-2.5 py-1 rounded-full">Add-on: WhatsApp números extras</span>
+                  <span class="text-[10px] text-gray-500 bg-white/[0.02] border border-white/5 px-2.5 py-1 rounded-full">Add-on: Prospecção Ativa</span>
+                </div>
+                <p class="text-[11px] text-gray-600 italic">Ideal para: negócios que geram leads mas perdem vendas por falta de velocidade no atendimento.</p>
+              </div>
+              <div class="lg:col-span-2 flex items-center justify-center">
+                <div class="w-full max-w-[280px] bg-[#0d0d0d] border border-white/5 rounded-xl p-4 space-y-2.5">
+                  <div class="flex items-center gap-2 mb-3"><div class="w-6 h-6 rounded-full bg-purple-500/20 flex items-center justify-center"><span class="material-icons text-purple-400 text-xs">storefront</span></div><span class="text-[10px] text-gray-400 font-medium">Comercial A.I · Vendas</span></div>
+                  <div class="bg-purple-600/15 rounded-xl rounded-tr-sm px-3 py-2 ml-auto max-w-[80%]"><p class="text-gray-200 text-[11px]">Vi o anúncio sobre o programa. Quanto custa?</p></div>
+                  <div class="bg-white/[0.03] rounded-xl rounded-tl-sm px-3 py-2"><p class="text-gray-300 text-[11px]">Ótimo! Antes de falar sobre investimento, me conta: qual o seu faturamento atual e qual o nicho?</p></div>
+                  <div class="bg-purple-600/15 rounded-xl rounded-tr-sm px-3 py-2 ml-auto max-w-[80%]"><p class="text-gray-200 text-[11px]">Consultoria de RH, 40k/mês</p></div>
+                  <div class="bg-white/[0.03] rounded-xl rounded-tl-sm px-3 py-2"><p class="text-gray-300 text-[11px]">Perfeito! Pelo seu perfil, o plano Professional é ideal. Posso agendar uma reunião consultiva?</p></div>
+                  <div class="flex justify-center mt-2"><span class="text-[9px] text-gray-600 italic">Reunião agendada em 6 min</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════ FOLD 4: AGENTES EM AÇÃO ═══════════════════════════════════ -->
+  <section id="em-acao" class="relative py-24 lg:py-32 bg-[#060606] overflow-hidden">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="text-center mb-12">
+        <span class="inline-block text-purple-400 font-semibold tracking-[0.2em] uppercase text-xs mb-3 border border-purple-500/30 bg-purple-500/10 px-3 py-1 rounded-full">Em Ação</span>
+        <h2 class="text-4xl md:text-5xl font-extrabold text-white mb-4 tracking-tight">Veja Como Seus Agentes <span class="text-gradient-purple">Operam</span></h2>
+        <p class="text-gray-400 max-w-xl mx-auto text-lg">Cenários reais do dia a dia de quem já usa os agentes B'Agent.</p>
+      </div>
+
+      <!-- Tabs -->
+      <div class="flex justify-center gap-2 mb-10">
+        <button class="demo-tab px-5 py-2.5 rounded-full text-sm font-bold transition-all bg-purple-600 text-white shadow-[0_0_15px_rgba(108,63,197,0.3)]" data-tab="clone" onclick="switchDemoTab('clone')">Clone A.I</button>
+        <button class="demo-tab px-5 py-2.5 rounded-full text-sm font-bold transition-all bg-white/5 text-gray-400 hover:text-white" data-tab="mentor" onclick="switchDemoTab('mentor')">Mentor A.I</button>
+        <button class="demo-tab px-5 py-2.5 rounded-full text-sm font-bold transition-all bg-white/5 text-gray-400 hover:text-white" data-tab="comercial" onclick="switchDemoTab('comercial')">Comercial A.I</button>
+      </div>
+
+      <!-- Demo Panel -->
+      <div class="bg-[#0e0e0e] border border-white/[0.06] rounded-2xl overflow-hidden">
+        <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between px-8 py-5 border-b border-white/5 bg-white/[0.01] gap-3">
+          <div>
+            <span id="demoScenario" class="text-white font-bold text-sm">Lead chega pelo WhatsApp às 23:47</span>
+            <span id="demoAgent" class="text-purple-400 text-xs block mt-0.5">Agente: Clone A.I</span>
+          </div>
+          <span id="demoResult" class="text-emerald-400 text-xs font-bold bg-emerald-500/10 border border-emerald-500/20 px-3 py-1 rounded-full whitespace-nowrap">Lead qualificado em 4 min</span>
+        </div>
+        <div id="demoChat" class="p-8 min-h-[300px] demo-panel">
+          <!-- Clone demo (default) -->
+          <div class="space-y-3 max-w-lg">
+            <div class="flex justify-end"><div class="bg-purple-600/20 border border-purple-500/20 rounded-2xl rounded-tr-sm px-4 py-2.5 max-w-[75%]"><p class="text-white text-sm">Oi, tô interessado no programa de mentoria. Ainda tem vaga?</p><span class="text-gray-500 text-[9px] block text-right mt-1">23:47</span></div></div>
+            <div class="flex justify-start"><div class="bg-[#1a1a1a] border border-white/5 rounded-2xl rounded-tl-sm px-4 py-2.5 max-w-[80%]"><p class="text-gray-200 text-sm">Oi! Sim, temos turma abrindo em breve. Me conta um pouco sobre você: qual é o seu nicho e há quanto tempo atua com mentoria?</p><span class="text-gray-600 text-[9px] block mt-1">23:47 · <span class="text-purple-400/60">Clone A.I</span></span></div></div>
+            <div class="flex justify-end"><div class="bg-purple-600/20 border border-purple-500/20 rounded-2xl rounded-tr-sm px-4 py-2.5 max-w-[75%]"><p class="text-white text-sm">Trabalho com mentoria de liderança, 2 anos. Faturo uns 25k/mês.</p><span class="text-gray-500 text-[9px] block text-right mt-1">23:48</span></div></div>
+            <div class="flex justify-start"><div class="bg-[#1a1a1a] border border-white/5 rounded-2xl rounded-tl-sm px-4 py-2.5 max-w-[80%]"><p class="text-gray-200 text-sm">Excelente perfil! Com 25k/mês, você tem boa base para escalar. O programa Professional seria ideal. Quer fazer um diagnóstico rápido (2 min) pra eu recomendar o plano certo? 👇</p><span class="text-gray-600 text-[9px] block mt-1">23:48 · <span class="text-purple-400/60">Clone A.I</span></span></div></div>
+            <div class="flex justify-start"><div class="bg-purple-600/30 border border-purple-500/30 rounded-xl px-4 py-2.5"><span class="text-purple-300 text-sm font-medium flex items-center gap-2"><span class="material-icons text-sm">assignment</span>Iniciar Diagnóstico →</span></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════ FOLD 5: CENTRAL DE INTELIGÊNCIA ═══════════════════════════════════ -->
+  <section id="central" class="relative py-24 lg:py-32 overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="text-center mb-16">
+        <span class="inline-block text-purple-400 font-semibold tracking-[0.2em] uppercase text-xs mb-3 border border-purple-500/30 bg-purple-500/10 px-3 py-1 rounded-full">Central de Inteligência</span>
+        <h2 class="text-4xl md:text-5xl font-extrabold text-white mb-4 tracking-tight">+40 Soluções de IA <span class="text-gradient-purple">a um Clique</span></h2>
+        <p class="text-gray-400 max-w-2xl mx-auto text-lg">Além dos agentes especializados, todo cliente B'Agent tem acesso à Central de Inteligência: assistentes de IA pré-configurados para produtividade, conteúdo, análise e operações.</p>
+      </div>
+
+      <!-- Grid de categorias -->
+      <div class="grid grid-cols-2 md:grid-cols-3 gap-4 mb-16 max-w-4xl mx-auto">
+        <div class="p-6 bg-gradient-to-b from-[#141418] to-[#0a0a0a] border border-white/[0.06] rounded-xl hover:border-purple-500/20 transition-all">
+          <span class="material-icons text-purple-400 text-2xl mb-3 block">edit_note</span>
+          <h4 class="text-white font-bold text-sm mb-1">Geração de Conteúdo</h4>
+          <p class="text-gray-500 text-xs">Posts, emails, scripts de vídeo e copy</p>
+        </div>
+        <div class="p-6 bg-gradient-to-b from-[#141418] to-[#0a0a0a] border border-white/[0.06] rounded-xl hover:border-purple-500/20 transition-all">
+          <span class="material-icons text-purple-400 text-2xl mb-3 block">analytics</span>
+          <h4 class="text-white font-bold text-sm mb-1">Análise de Dados</h4>
+          <p class="text-gray-500 text-xs">Relatórios, dashboards e KPIs</p>
+        </div>
+        <div class="p-6 bg-gradient-to-b from-[#141418] to-[#0a0a0a] border border-white/[0.06] rounded-xl hover:border-purple-500/20 transition-all">
+          <span class="material-icons text-purple-400 text-2xl mb-3 block">palette</span>
+          <h4 class="text-white font-bold text-sm mb-1">Criação Visual</h4>
+          <p class="text-gray-500 text-xs">Briefings, prompts de imagem e design</p>
+        </div>
+        <div class="p-6 bg-gradient-to-b from-[#141418] to-[#0a0a0a] border border-white/[0.06] rounded-xl hover:border-purple-500/20 transition-all">
+          <span class="material-icons text-purple-400 text-2xl mb-3 block">task_alt</span>
+          <h4 class="text-white font-bold text-sm mb-1">Gestão de Projetos</h4>
+          <p class="text-gray-500 text-xs">Tarefas, sprints e follow-ups</p>
+        </div>
+        <div class="p-6 bg-gradient-to-b from-[#141418] to-[#0a0a0a] border border-white/[0.06] rounded-xl hover:border-purple-500/20 transition-all">
+          <span class="material-icons text-purple-400 text-2xl mb-3 block">search</span>
+          <h4 class="text-white font-bold text-sm mb-1">Pesquisa de Mercado</h4>
+          <p class="text-gray-500 text-xs">Concorrência, tendências e benchmarks</p>
+        </div>
+        <div class="p-6 bg-gradient-to-b from-[#141418] to-[#0a0a0a] border border-white/[0.06] rounded-xl hover:border-purple-500/20 transition-all">
+          <span class="material-icons text-purple-400 text-2xl mb-3 block">support_agent</span>
+          <h4 class="text-white font-bold text-sm mb-1">Atendimento</h4>
+          <p class="text-gray-500 text-xs">Respostas padrão, triagem e FAQ</p>
+        </div>
+      </div>
+
+      <!-- 2 Pacotes -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-3xl mx-auto">
+        <div class="p-8 bg-gradient-to-b from-[#141418] to-[#0a0a0a] border border-white/[0.06] rounded-2xl">
+          <h4 class="text-white font-black text-xl mb-2">Central 5</h4>
+          <p class="text-purple-400 text-sm font-medium mb-4">5 assistentes personalizados</p>
+          <ul class="space-y-2 text-gray-400 text-sm">
+            <li class="flex items-center gap-2"><span class="material-icons text-purple-400 text-xs">check</span> Integração com Experience Flix</li>
+            <li class="flex items-center gap-2"><span class="material-icons text-purple-400 text-xs">check</span> Treinamento inicial</li>
+            <li class="flex items-center gap-2"><span class="material-icons text-purple-400 text-xs">check</span> Suporte técnico</li>
+          </ul>
+        </div>
+        <div class="p-8 bg-gradient-to-b from-[#0e0e12] to-[#0a0a0a] border border-purple-500/20 rounded-2xl shadow-[0_0_30px_-10px_rgba(108,63,197,0.15)]">
+          <div class="flex items-center gap-2 mb-2">
+            <h4 class="text-white font-black text-xl">Central 10</h4>
+            <span class="text-[9px] bg-purple-500/20 text-purple-400 px-2 py-0.5 rounded font-bold uppercase tracking-wider">Recomendado</span>
+          </div>
+          <p class="text-purple-400 text-sm font-medium mb-4">10 assistentes personalizados</p>
+          <ul class="space-y-2 text-gray-400 text-sm">
+            <li class="flex items-center gap-2"><span class="material-icons text-purple-400 text-xs">check</span> Tudo da Central 5</li>
+            <li class="flex items-center gap-2"><span class="material-icons text-purple-400 text-xs">check</span> Treinamento completo</li>
+            <li class="flex items-center gap-2"><span class="material-icons text-purple-400 text-xs">check</span> Suporte prioritário</li>
+            <li class="flex items-center gap-2"><span class="material-icons text-purple-400 text-xs">check</span> Relatórios de performance</li>
+          </ul>
+        </div>
+      </div>
+      <p class="text-center text-gray-600 text-xs mt-6">Incluída em todos os pacotes de agentes.</p>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════ FOLD 6: COMO FUNCIONA ═══════════════════════════════════ -->
+  <section id="como-funciona" class="relative py-24 lg:py-32 bg-[#050505] overflow-hidden">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="text-center mb-16">
+        <span class="inline-block text-purple-400 font-semibold tracking-[0.2em] uppercase text-xs mb-3 border border-purple-500/30 bg-purple-500/10 px-3 py-1 rounded-full">Como Funciona</span>
+        <h2 class="text-4xl md:text-5xl font-extrabold text-white mb-4 tracking-tight">Do Seu Conhecimento ao <span class="text-gradient-purple">Agente Operando</span>: 5 Passos.</h2>
+      </div>
+
+      <!-- Timeline Vertical -->
+      <div class="relative space-y-12">
+        <div class="absolute left-6 top-0 bottom-0 w-0.5 bg-gradient-to-b from-purple-600 via-fuchsia-500 to-purple-400/20"></div>
+
+        <div class="relative pl-20">
+          <div class="absolute left-0 w-12 h-12 rounded-full bg-purple-600 flex items-center justify-center shadow-[0_0_20px_rgba(108,63,197,0.5)] z-10"><span class="material-icons text-white">psychology</span></div>
+          <span class="text-purple-400 font-bold text-xs uppercase tracking-wider block mb-1">Passo 1</span>
+          <h4 class="text-white font-bold text-xl mb-2">Diagnóstico de IA</h4>
+          <p class="text-gray-500 text-sm font-light leading-relaxed">Analisamos seu negócio, seus canais, seu volume de interações e identificamos quais agentes geram mais impacto para o seu momento.</p>
+        </div>
+
+        <div class="relative pl-20">
+          <div class="absolute left-0 w-12 h-12 rounded-full bg-purple-600 flex items-center justify-center shadow-[0_0_20px_rgba(108,63,197,0.5)] z-10"><span class="material-icons text-white">fingerprint</span></div>
+          <span class="text-purple-400 font-bold text-xs uppercase tracking-wider block mb-1">Passo 2</span>
+          <h4 class="text-white font-bold text-xl mb-2">Extração de DNA</h4>
+          <p class="text-gray-500 text-sm font-light leading-relaxed">Processo estruturado de captura da sua expertise: analisamos seus vídeos, textos, áudios, método proprietário e tom de comunicação. Isso alimenta o modelo de IA.</p>
+        </div>
+
+        <div class="relative pl-20">
+          <div class="absolute left-0 w-12 h-12 rounded-full bg-purple-600 flex items-center justify-center shadow-[0_0_20px_rgba(108,63,197,0.5)] z-10"><span class="material-icons text-white">model_training</span></div>
+          <span class="text-purple-400 font-bold text-xs uppercase tracking-wider block mb-1">Passo 3</span>
+          <h4 class="text-white font-bold text-xl mb-2">Treinamento do Agente</h4>
+          <p class="text-gray-500 text-sm font-light leading-relaxed">Configuramos e treinamos o agente com sua base de conhecimento. Rodamos testes internos e refinamos respostas até o agente estar "no ponto".</p>
+        </div>
+
+        <div class="relative pl-20">
+          <div class="absolute left-0 w-12 h-12 rounded-full bg-purple-600 flex items-center justify-center shadow-[0_0_20px_rgba(108,63,197,0.5)] z-10"><span class="material-icons text-white">verified</span></div>
+          <span class="text-purple-400 font-bold text-xs uppercase tracking-wider block mb-1">Passo 4</span>
+          <h4 class="text-white font-bold text-xl mb-2">Validação Conjunta</h4>
+          <p class="text-gray-500 text-sm font-light leading-relaxed">Você testa o agente em cenários reais e valida que o tom, a precisão e o direcionamento estão corretos. Ajustes finais feitos juntos.</p>
+        </div>
+
+        <div class="relative pl-20">
+          <div class="absolute left-0 w-12 h-12 rounded-full bg-purple-600 flex items-center justify-center shadow-[0_0_20px_rgba(108,63,197,0.5)] z-10"><span class="material-icons text-white">rocket_launch</span></div>
+          <span class="text-purple-400 font-bold text-xs uppercase tracking-wider block mb-1">Passo 5</span>
+          <h4 class="text-white font-bold text-xl mb-2">Ativação & Monitoramento</h4>
+          <p class="text-gray-500 text-sm font-light leading-relaxed">Agente entra em operação nos seus canais. Monitoramos performance na primeira semana e otimizamos continuamente. Dashboard de métricas disponível desde o dia 1.</p>
+        </div>
+      </div>
+
+      <div class="text-center mt-12">
+        <p class="text-gray-400 text-lg font-light">Da extração de DNA ao agente operando: <strong class="text-white font-semibold">10 a 20 dias úteis</strong> dependendo da complexidade.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════ FOLD 7: INTEGRAÇÃO ECOSSISTEMA ═══════════════════════════════════ -->
+  <section id="integracao" class="relative py-24 lg:py-32 overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="text-center mb-16">
+        <span class="inline-block text-purple-400 font-semibold tracking-[0.2em] uppercase text-xs mb-3 border border-purple-500/30 bg-purple-500/10 px-3 py-1 rounded-full">Ecossistema Integrado</span>
+        <h2 class="text-4xl md:text-5xl font-extrabold text-white mb-4 tracking-tight">Mais Poderosos com a <span class="text-gradient-purple">Infraestrutura Certa</span>.</h2>
+        <p class="text-gray-400 max-w-2xl mx-auto text-lg">Os agentes B'Agent se tornam exponencialmente mais eficazes quando operam sobre a infraestrutura B'Tech e com a estratégia B'Experts.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+        <!-- B'Agent solo -->
+        <div class="bg-gradient-to-b from-[#141418] to-[#0a0a0a] border border-purple-500/10 rounded-2xl p-8 hover:border-purple-500/30 transition-all duration-500">
+          <div class="flex items-center gap-3 mb-6">
+            <div class="w-10 h-10 rounded-xl bg-purple-500/15 flex items-center justify-center"><span class="material-icons text-purple-400">smart_toy</span></div>
+            <h3 class="text-white font-bold text-lg">B'Agent</h3>
+          </div>
+          <p class="text-gray-500 text-sm font-light mb-6">Inteligência artificial personalizada</p>
+          <div class="space-y-3">
+            <div class="flex items-center gap-2"><span class="material-icons text-purple-400 text-xs">check</span><span class="text-gray-300 text-xs">Clone A.I no WhatsApp</span></div>
+            <div class="flex items-center gap-2"><span class="material-icons text-purple-400 text-xs">check</span><span class="text-gray-300 text-xs">Mentor A.I acompanhando alunos</span></div>
+            <div class="flex items-center gap-2"><span class="material-icons text-purple-400 text-xs">check</span><span class="text-gray-300 text-xs">Comercial A.I qualificando e vendendo</span></div>
+          </div>
+          <p class="text-gray-600 text-[11px] italic mt-6">Já funciona. Mas pode ser muito mais.</p>
+        </div>
+
+        <!-- B'Agent + B'Tech -->
+        <div class="bg-gradient-to-b from-[#141418] to-[#0a0a0a] border border-purple-500/20 rounded-2xl p-8 hover:border-purple-500/40 transition-all duration-500 shadow-[0_0_30px_-10px_rgba(108,63,197,0.1)]">
+          <div class="flex items-center gap-2 mb-6">
+            <div class="w-10 h-10 rounded-xl bg-purple-500/15 flex items-center justify-center"><span class="material-icons text-purple-400 text-sm">smart_toy</span></div>
+            <span class="text-gray-600">+</span>
+            <div class="w-10 h-10 rounded-xl bg-blue-500/15 flex items-center justify-center"><span class="material-icons text-blue-400 text-sm">developer_board</span></div>
+            <h3 class="text-white font-bold text-lg">+ B'Tech</h3>
+          </div>
+          <p class="text-gray-500 text-sm font-light mb-6">IA + infraestrutura digital</p>
+          <div class="space-y-3">
+            <div class="flex items-center gap-2"><span class="material-icons text-purple-400 text-xs">check</span><span class="text-gray-300 text-xs">Tudo do B'Agent</span></div>
+            <div class="flex items-center gap-2"><span class="material-icons text-blue-400 text-xs">add</span><span class="text-gray-300 text-xs">Clone integrado à Experience Flix</span></div>
+            <div class="flex items-center gap-2"><span class="material-icons text-blue-400 text-xs">add</span><span class="text-gray-300 text-xs">Comercial integrado aos Funnel Pages</span></div>
+            <div class="flex items-center gap-2"><span class="material-icons text-blue-400 text-xs">add</span><span class="text-gray-300 text-xs">Dashboard unificado tech + IA</span></div>
+          </div>
+          <p class="text-gray-600 text-[11px] italic mt-6">Infraestrutura e inteligência trabalhando juntas.</p>
+        </div>
+
+        <!-- Combo completo -->
+        <div class="bg-gradient-to-b from-[#100e18] to-[#0a0a0a] border border-purple-500/30 rounded-2xl p-8 hover:border-purple-400/50 transition-all duration-500 shadow-[0_0_40px_-10px_rgba(108,63,197,0.2)] relative">
+          <div class="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-purple-500 via-fuchsia-500 to-primary"></div>
+          <div class="flex items-center gap-2 mb-6">
+            <div class="w-8 h-8 rounded-lg bg-purple-500/15 flex items-center justify-center"><span class="material-icons text-purple-400 text-sm">smart_toy</span></div>
+            <span class="text-gray-600 text-xs">+</span>
+            <div class="w-8 h-8 rounded-lg bg-blue-500/15 flex items-center justify-center"><span class="material-icons text-blue-400 text-sm">developer_board</span></div>
+            <span class="text-gray-600 text-xs">+</span>
+            <div class="w-8 h-8 rounded-lg bg-primary/15 flex items-center justify-center"><span class="material-icons text-primary text-sm">psychology</span></div>
+          </div>
+          <h3 class="text-white font-bold text-lg mb-1">+ B'Experts</h3>
+          <p class="text-gray-500 text-sm font-light mb-6">Ecossistema completo</p>
+          <div class="space-y-3">
+            <div class="flex items-center gap-2"><span class="material-icons text-purple-400 text-xs">check</span><span class="text-gray-300 text-xs">Tudo do B'Agent + B'Tech</span></div>
+            <div class="flex items-center gap-2"><span class="material-icons text-primary text-xs">add</span><span class="text-gray-300 text-xs">Estratégia definindo o que os agentes comunicam</span></div>
+            <div class="flex items-center gap-2"><span class="material-icons text-primary text-xs">add</span><span class="text-gray-300 text-xs">Mentoria humana + mentoria IA</span></div>
+            <div class="flex items-center gap-2"><span class="material-icons text-primary text-xs">add</span><span class="text-gray-300 text-xs">Resultados medidos nos rituais semanais</span></div>
+            <div class="flex items-center gap-2"><span class="material-icons text-primary text-xs">add</span><span class="text-gray-300 text-xs">Comunidade compartilhando best practices IA</span></div>
+          </div>
+          <p class="text-purple-400 text-[11px] font-medium mt-6">Expertise humana amplificada por IA.</p>
+        </div>
+      </div>
+
+      <div class="text-center mt-12">
+        <a href="/" class="inline-flex items-center gap-2 border border-white/10 hover:border-purple-500/40 text-gray-300 hover:text-white font-medium py-3 px-6 rounded-xl transition-all text-sm">
+          CONHECER O ECOSSISTEMA COMPLETO
+          <span class="material-icons text-sm">arrow_forward</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════ FOLD 8: CASES ═══════════════════════════════════ -->
+  <section id="cases" class="relative py-24 lg:py-32 bg-[#060606] overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="text-center mb-16">
+        <span class="inline-block text-purple-400 font-semibold tracking-[0.2em] uppercase text-xs mb-3 border border-purple-500/30 bg-purple-500/10 px-3 py-1 rounded-full">Cases</span>
+        <h2 class="text-4xl md:text-5xl font-extrabold text-white mb-4 tracking-tight">Resultados com <span class="text-gradient-purple">IA Real</span>.</h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <!-- Case 1 -->
+        <div class="bg-gradient-to-b from-[#141418] to-[#0a0a0a] border border-white/[0.06] rounded-2xl p-8 hover:border-purple-500/20 transition-all duration-500">
+          <div class="flex items-center gap-3 mb-6">
+            <div class="w-12 h-12 rounded-full bg-purple-500/10 flex items-center justify-center"><span class="material-icons text-purple-400">face</span></div>
+            <span class="text-purple-400 font-bold text-[10px] uppercase tracking-wider">Clone A.I</span>
+          </div>
+          <p class="text-white italic font-light leading-relaxed mb-6">"Antes do Clone, eu respondia 30% das mensagens no prazo. Hoje, 100% dos leads recebem resposta em menos de 10 segundos. Minhas conversões subiram 3x."</p>
+          <div class="pt-4 border-t border-white/5">
+            <span class="text-white font-bold text-sm block">Thiago Ramos</span>
+            <span class="text-gray-500 text-xs">Mentor de Produtividade</span>
+          </div>
+          <div class="mt-4 flex gap-2">
+            <span class="text-[10px] bg-purple-500/10 text-purple-400 px-2 py-0.5 rounded font-bold">100% taxa resposta</span>
+            <span class="text-[10px] bg-emerald-500/10 text-emerald-400 px-2 py-0.5 rounded font-bold">3x conversões</span>
+          </div>
+        </div>
+
+        <!-- Case 2 -->
+        <div class="bg-gradient-to-b from-[#141418] to-[#0a0a0a] border border-white/[0.06] rounded-2xl p-8 hover:border-purple-500/20 transition-all duration-500">
+          <div class="flex items-center gap-3 mb-6">
+            <div class="w-12 h-12 rounded-full bg-purple-500/10 flex items-center justify-center"><span class="material-icons text-purple-400">school</span></div>
+            <span class="text-purple-400 font-bold text-[10px] uppercase tracking-wider">Mentor A.I</span>
+          </div>
+          <p class="text-white italic font-light leading-relaxed mb-6">"Perdíamos 20% dos alunos no primeiro mês. O Mentor A.I passou a reativar quem parava e indicar o próximo passo. Churn caiu de 20% para 11%."</p>
+          <div class="pt-4 border-t border-white/5">
+            <span class="text-white font-bold text-sm block">Luciana Ferreira</span>
+            <span class="text-gray-500 text-xs">Escola de Finanças Pessoais</span>
+          </div>
+          <div class="mt-4 flex gap-2">
+            <span class="text-[10px] bg-purple-500/10 text-purple-400 px-2 py-0.5 rounded font-bold">-45% churn</span>
+            <span class="text-[10px] bg-emerald-500/10 text-emerald-400 px-2 py-0.5 rounded font-bold">20% → 11%</span>
+          </div>
+        </div>
+
+        <!-- Case 3 -->
+        <div class="bg-gradient-to-b from-[#141418] to-[#0a0a0a] border border-white/[0.06] rounded-2xl p-8 hover:border-purple-500/20 transition-all duration-500">
+          <div class="flex items-center gap-3 mb-6">
+            <div class="w-12 h-12 rounded-full bg-purple-500/10 flex items-center justify-center"><span class="material-icons text-purple-400">storefront</span></div>
+            <span class="text-purple-400 font-bold text-[10px] uppercase tracking-wider">Comercial A.I</span>
+          </div>
+          <p class="text-white italic font-light leading-relaxed mb-6">"O agente comercial qualificou 347 leads e agendou 89 reuniões no primeiro mês. Fechamos R$180k em vendas que não existiriam sem ele."</p>
+          <div class="pt-4 border-t border-white/5">
+            <span class="text-white font-bold text-sm block">Rafael Duarte</span>
+            <span class="text-gray-500 text-xs">Consultoria de RH</span>
+          </div>
+          <div class="mt-4 flex gap-2">
+            <span class="text-[10px] bg-purple-500/10 text-purple-400 px-2 py-0.5 rounded font-bold">89 reuniões</span>
+            <span class="text-[10px] bg-emerald-500/10 text-emerald-400 px-2 py-0.5 rounded font-bold">R$180k vendas</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════ FOLD 9: FAQ ═══════════════════════════════════ -->
+  <section id="faq" class="relative py-24 lg:py-32 overflow-hidden">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="text-center mb-16">
+        <span class="inline-block text-purple-400 font-semibold tracking-[0.2em] uppercase text-xs mb-3 border border-purple-500/30 bg-purple-500/10 px-3 py-1 rounded-full">FAQ</span>
+        <h2 class="text-4xl md:text-5xl font-extrabold text-white mb-4 tracking-tight">Perguntas <span class="text-gradient-purple">Frequentes</span></h2>
+      </div>
+
+      <div class="space-y-3">
+        <div class="bg-[#141418] border border-white/[0.06] rounded-xl overflow-hidden">
+          <button onclick="toggleFaq(this)" class="w-full flex items-center justify-between p-6 text-left hover:bg-white/[0.02] transition-colors">
+            <span class="text-white font-semibold text-sm pr-4">Os agentes realmente falam como eu?</span>
+            <span class="material-icons text-gray-500 transition-transform duration-300">expand_more</span>
+          </button>
+          <div class="faq-content" style="max-height:0"><p class="px-6 pb-6 text-gray-400 text-sm font-light leading-relaxed">Sim. O processo de Extração de DNA é intensivo — analisamos seus vídeos, textos, áudios e padrões de comunicação. O resultado é um agente que usa seu vocabulário, seu tom e até suas expressões características. Clientes relatam que leads não percebem que é IA.</p></div>
+        </div>
+        <div class="bg-[#141418] border border-white/[0.06] rounded-xl overflow-hidden">
+          <button onclick="toggleFaq(this)" class="w-full flex items-center justify-between p-6 text-left hover:bg-white/[0.02] transition-colors">
+            <span class="text-white font-semibold text-sm pr-4">E se o agente disser algo errado?</span>
+            <span class="material-icons text-gray-500 transition-transform duration-300">expand_more</span>
+          </button>
+          <div class="faq-content" style="max-height:0"><p class="px-6 pb-6 text-gray-400 text-sm font-light leading-relaxed">Os agentes operam dentro de uma base de conhecimento controlada por você. Eles não "inventam" — respondem com base no que foi treinado. Além disso, você pode definir limites de assunto, respostas padrão para temas sensíveis e receber alertas quando o agente não souber responder (escalonamento para humano).</p></div>
+        </div>
+        <div class="bg-[#141418] border border-white/[0.06] rounded-xl overflow-hidden">
+          <button onclick="toggleFaq(this)" class="w-full flex items-center justify-between p-6 text-left hover:bg-white/[0.02] transition-colors">
+            <span class="text-white font-semibold text-sm pr-4">Funciona mesmo no WhatsApp?</span>
+            <span class="material-icons text-gray-500 transition-transform duration-300">expand_more</span>
+          </button>
+          <div class="faq-content" style="max-height:0"><p class="px-6 pb-6 text-gray-400 text-sm font-light leading-relaxed">Sim. Usamos a API oficial do WhatsApp Business (Meta). Isso garante que a operação é regulamentada, segura e sem risco de bloqueio. O agente opera no seu número comercial.</p></div>
+        </div>
+        <div class="bg-[#141418] border border-white/[0.06] rounded-xl overflow-hidden">
+          <button onclick="toggleFaq(this)" class="w-full flex items-center justify-between p-6 text-left hover:bg-white/[0.02] transition-colors">
+            <span class="text-white font-semibold text-sm pr-4">Preciso ter conhecimento técnico para gerenciar os agentes?</span>
+            <span class="material-icons text-gray-500 transition-transform duration-300">expand_more</span>
+          </button>
+          <div class="faq-content" style="max-height:0"><p class="px-6 pb-6 text-gray-400 text-sm font-light leading-relaxed">Não. Todo o setup, treinamento e configuração é feito pelo nosso time. Você interage com o agente pelo dashboard (interface visual, sem código) e pode ajustar respostas, ver métricas e escalonar conversas com cliques.</p></div>
+        </div>
+        <div class="bg-[#141418] border border-white/[0.06] rounded-xl overflow-hidden">
+          <button onclick="toggleFaq(this)" class="w-full flex items-center justify-between p-6 text-left hover:bg-white/[0.02] transition-colors">
+            <span class="text-white font-semibold text-sm pr-4">Qual a diferença entre Clone, Mentor e Comercial?</span>
+            <span class="material-icons text-gray-500 transition-transform duration-300">expand_more</span>
+          </button>
+          <div class="faq-content" style="max-height:0"><p class="px-6 pb-6 text-gray-400 text-sm font-light leading-relaxed">Clone é o atendimento reativo (responde quem fala com você). Mentor é proativo (monitora alunos e reativa quem parou). Comercial é focado em vendas (qualifica, agenda e fecha). Podem operar juntos ou separados.</p></div>
+        </div>
+        <div class="bg-[#141418] border border-white/[0.06] rounded-xl overflow-hidden">
+          <button onclick="toggleFaq(this)" class="w-full flex items-center justify-between p-6 text-left hover:bg-white/[0.02] transition-colors">
+            <span class="text-white font-semibold text-sm pr-4">Os agentes funcionam sem a B'Tech e B'Experts?</span>
+            <span class="material-icons text-gray-500 transition-transform duration-300">expand_more</span>
+          </button>
+          <div class="faq-content" style="max-height:0"><p class="px-6 pb-6 text-gray-400 text-sm font-light leading-relaxed">Sim. Os agentes podem ser contratados de forma avulsa, independente das outras unidades. No entanto, quando integrados à Experience Flix (B'Tech) e à estratégia do programa (B'Experts), o resultado é significativamente melhor.</p></div>
+        </div>
+        <div class="bg-[#141418] border border-white/[0.06] rounded-xl overflow-hidden">
+          <button onclick="toggleFaq(this)" class="w-full flex items-center justify-between p-6 text-left hover:bg-white/[0.02] transition-colors">
+            <span class="text-white font-semibold text-sm pr-4">Quanto tempo leva para o agente estar operando?</span>
+            <span class="material-icons text-gray-500 transition-transform duration-300">expand_more</span>
+          </button>
+          <div class="faq-content" style="max-height:0"><p class="px-6 pb-6 text-gray-400 text-sm font-light leading-relaxed">De 10 a 20 dias úteis, dependendo da complexidade. Clone A.I é o mais rápido (10 dias). Mentor e Comercial, que exigem mais treinamento e integrações, levam até 20 dias.</p></div>
+        </div>
+        <div class="bg-[#141418] border border-white/[0.06] rounded-xl overflow-hidden">
+          <button onclick="toggleFaq(this)" class="w-full flex items-center justify-between p-6 text-left hover:bg-white/[0.02] transition-colors">
+            <span class="text-white font-semibold text-sm pr-4">Como funciona o investimento?</span>
+            <span class="material-icons text-gray-500 transition-transform duration-300">expand_more</span>
+          </button>
+          <div class="faq-content" style="max-height:0"><p class="px-6 pb-6 text-gray-400 text-sm font-light leading-relaxed">Cada agente tem um setup único (implementação) + recorrência mensal (operação e suporte). Os valores são apresentados no diagnóstico de IA, onde analisamos quais agentes fazem sentido e dimensionamos o projeto para o seu negócio. Produtos avulsos também estão disponíveis.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════ FOLD 10: CTA FINAL ═══════════════════════════════════ -->
+  <section id="cta-final" class="relative py-24 lg:py-32 overflow-hidden">
+    <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(108,63,197,0.12),transparent_70%)]"></div>
+    <!-- Neural decorative SVG -->
+    <svg class="absolute inset-0 w-full h-full opacity-[0.04] pointer-events-none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="10%" cy="20%" r="2" fill="#6C3FC5"/><circle cx="30%" cy="10%" r="1.5" fill="#6C3FC5"/><circle cx="50%" cy="30%" r="2" fill="#6C3FC5"/>
+      <circle cx="70%" cy="15%" r="1.5" fill="#6C3FC5"/><circle cx="90%" cy="25%" r="2" fill="#6C3FC5"/>
+      <circle cx="20%" cy="70%" r="2" fill="#6C3FC5"/><circle cx="40%" cy="80%" r="1.5" fill="#6C3FC5"/><circle cx="60%" cy="65%" r="2" fill="#6C3FC5"/>
+      <circle cx="80%" cy="85%" r="1.5" fill="#6C3FC5"/>
+      <line x1="10%" y1="20%" x2="30%" y2="10%" stroke="#6C3FC5" stroke-width="0.5"/>
+      <line x1="30%" y1="10%" x2="50%" y2="30%" stroke="#6C3FC5" stroke-width="0.5"/>
+      <line x1="50%" y1="30%" x2="70%" y2="15%" stroke="#6C3FC5" stroke-width="0.5"/>
+      <line x1="70%" y1="15%" x2="90%" y2="25%" stroke="#6C3FC5" stroke-width="0.5"/>
+      <line x1="20%" y1="70%" x2="40%" y2="80%" stroke="#6C3FC5" stroke-width="0.5"/>
+      <line x1="40%" y1="80%" x2="60%" y2="65%" stroke="#6C3FC5" stroke-width="0.5"/>
+      <line x1="60%" y1="65%" x2="80%" y2="85%" stroke="#6C3FC5" stroke-width="0.5"/>
+    </svg>
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+      <h2 class="text-4xl md:text-5xl font-extrabold text-white tracking-tight mb-6">
+        Pronto para Ter Sua <span class="text-gradient-purple">Equipe de IA</span>?
+      </h2>
+      <p class="text-xl text-gray-300 font-light leading-relaxed max-w-2xl mx-auto mb-10">
+        Agende um diagnóstico de IA gratuito. Nosso time analisa seus canais, seu volume de interações e seu modelo de negócio para recomendar os agentes certos — e mostrar o impacto esperado no seu faturamento.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center mb-10">
+        <a href="#" class="inline-flex items-center justify-center gap-2 bg-purple-600 hover:bg-purple-700 text-white font-bold py-4 px-8 rounded-xl shadow-[0_0_40px_-5px_rgba(108,63,197,0.5)] transition-all hover:scale-[1.02] text-sm uppercase tracking-wider">
+          <span class="material-icons">psychology</span>
+          Agendar Diagnóstico de IA
+        </a>
+        <a href="#" class="inline-flex items-center justify-center gap-2 border border-white/10 hover:border-purple-500/40 text-gray-300 hover:text-white font-medium py-4 px-8 rounded-xl transition-all text-sm">
+          <span class="material-icons">chat</span>
+          Falar com um Especialista
+        </a>
+      </div>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center text-sm text-gray-400">
+        <span class="flex items-center gap-2"><span class="material-icons text-purple-400 text-sm">check_circle</span> Análise gratuita dos seus canais</span>
+        <span class="flex items-center gap-2"><span class="material-icons text-purple-400 text-sm">check_circle</span> Recomendação com projeção de ROI</span>
+        <span class="flex items-center gap-2"><span class="material-icons text-purple-400 text-sm">check_circle</span> Demo ao vivo do agente</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════ FOOTER ═══════════════════════════════════ -->
+  <footer class="bg-black border-t border-white/5 pt-20 pb-10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+        <div>
+          <a href="/" class="flex items-center gap-2 mb-4">
+            <img src="/images/blenduca-logo.svg" alt="Blenduca Logo" class="h-8" />
+          </a>
+          <p class="text-gray-500 text-sm font-light leading-relaxed mb-6">Transformando expertise em negócios escaláveis na era da Inteligência Artificial.</p>
+          <div class="flex items-center gap-4">
+            <a href="#" class="w-10 h-10 rounded-lg bg-white/5 flex items-center justify-center text-gray-500 hover:text-purple-400 hover:bg-purple-500/10 transition-all" aria-label="LinkedIn">
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            </a>
+            <a href="#" class="w-10 h-10 rounded-lg bg-white/5 flex items-center justify-center text-gray-500 hover:text-purple-400 hover:bg-purple-500/10 transition-all" aria-label="Instagram">
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+            </a>
+            <a href="#" class="w-10 h-10 rounded-lg bg-white/5 flex items-center justify-center text-gray-500 hover:text-purple-400 hover:bg-purple-500/10 transition-all" aria-label="YouTube">
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+            </a>
+          </div>
+        </div>
+        <div>
+          <h4 class="text-white font-semibold mb-6 text-sm uppercase tracking-wider">Ecossistema</h4>
+          <ul class="space-y-3">
+            <li><a href="/" class="text-gray-500 hover:text-gray-300 text-sm font-light transition-colors">Landing Page</a></li>
+            <li><a href="b-experts.html" class="text-gray-500 hover:text-gray-300 text-sm font-light transition-colors">B'Experts</a></li>
+            <li><a href="b-tech.html" class="text-gray-500 hover:text-gray-300 text-sm font-light transition-colors">B'Tech</a></li>
+            <li><a href="b-agent.html" class="text-gray-500 hover:text-gray-300 text-sm font-light transition-colors">B'Agent</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="text-white font-semibold mb-6 text-sm uppercase tracking-wider">Agentes</h4>
+          <ul class="space-y-3">
+            <li><a href="#agentes" class="text-gray-500 hover:text-gray-300 text-sm font-light transition-colors">Clone A.I</a></li>
+            <li><a href="#agentes" class="text-gray-500 hover:text-gray-300 text-sm font-light transition-colors">Mentor A.I</a></li>
+            <li><a href="#agentes" class="text-gray-500 hover:text-gray-300 text-sm font-light transition-colors">Comercial A.I</a></li>
+            <li><a href="#central" class="text-gray-500 hover:text-gray-300 text-sm font-light transition-colors">Central de Inteligência</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="text-white font-semibold mb-6 text-sm uppercase tracking-wider">Contato</h4>
+          <ul class="space-y-3 mb-6">
+            <li class="flex items-center gap-2 text-gray-500 text-sm font-light"><span class="material-icons text-base text-gray-600">email</span>contato@blenduca.com</li>
+            <li class="flex items-start gap-2 text-gray-500 text-sm font-light"><span class="material-icons text-base text-gray-600 mt-0.5">location_on</span>São Paulo, SP — Brasil</li>
+          </ul>
+          <a href="https://planoexpert.blenduca.com.br/" class="inline-flex items-center gap-1 text-purple-400 text-sm font-medium hover:text-purple-300 transition-colors">Diagnóstico de IA <span class="material-icons text-sm">arrow_forward</span></a>
+        </div>
+      </div>
+      <div class="border-t border-white/5 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+        <p class="text-gray-600 text-xs font-light">&copy; 2025 Blenduca. Todos os direitos reservados.</p>
+        <div class="flex items-center gap-6">
+          <a href="#" class="text-gray-600 hover:text-gray-400 text-xs font-light transition-colors">Política de Privacidade</a>
+          <a href="#" class="text-gray-600 hover:text-gray-400 text-xs font-light transition-colors">Termos de Uso</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ═══════════════════════════════════ JAVASCRIPT ═══════════════════════════════════ -->
+  <script>
+    // Mobile Menu
+    const menuBtn = document.getElementById('menuBtn');
+    const closeMenuBtn = document.getElementById('closeMenuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    menuBtn.addEventListener('click', () => mobileMenu.classList.add('open'));
+    closeMenuBtn.addEventListener('click', () => mobileMenu.classList.remove('open'));
+
+    // Navbar scroll
+    const nav = document.querySelector('nav');
+    window.addEventListener('scroll', () => {
+      nav.style.borderBottomColor = window.scrollY > 50 ? 'rgba(255,255,255,0.08)' : 'rgba(255,255,255,0.05)';
+    });
+
+    // FAQ Accordion
+    function toggleFaq(btn) {
+      const content = btn.nextElementSibling;
+      const icon = btn.querySelector('.material-icons');
+      const isOpen = content.style.maxHeight && content.style.maxHeight !== '0px';
+      document.querySelectorAll('.faq-content').forEach(c => { c.style.maxHeight = '0px'; });
+      document.querySelectorAll('.faq-content').forEach(c => {
+        const i = c.previousElementSibling.querySelector('.material-icons');
+        if (i) i.style.transform = 'rotate(0deg)';
+      });
+      if (!isOpen) {
+        content.style.maxHeight = content.scrollHeight + 'px';
+        icon.style.transform = 'rotate(180deg)';
+      }
+    }
+
+    // Demo Tabs
+    const demoData = {
+      clone: {
+        scenario: 'Lead chega pelo WhatsApp às 23:47',
+        agent: 'Agente: Clone A.I',
+        result: 'Lead qualificado em 4 min',
+        chat: `
+          <div class="space-y-3 max-w-lg">
+            <div class="flex justify-end"><div class="bg-purple-600/20 border border-purple-500/20 rounded-2xl rounded-tr-sm px-4 py-2.5 max-w-[75%]"><p class="text-white text-sm">Oi, tô interessado no programa de mentoria. Ainda tem vaga?</p><span class="text-gray-500 text-[9px] block text-right mt-1">23:47</span></div></div>
+            <div class="flex justify-start"><div class="bg-[#1a1a1a] border border-white/5 rounded-2xl rounded-tl-sm px-4 py-2.5 max-w-[80%]"><p class="text-gray-200 text-sm">Oi! Sim, temos turma abrindo em breve. Me conta um pouco sobre você: qual é o seu nicho e há quanto tempo atua com mentoria?</p><span class="text-gray-600 text-[9px] block mt-1">23:47 · <span class="text-purple-400/60">Clone A.I</span></span></div></div>
+            <div class="flex justify-end"><div class="bg-purple-600/20 border border-purple-500/20 rounded-2xl rounded-tr-sm px-4 py-2.5 max-w-[75%]"><p class="text-white text-sm">Mentoria de liderança, 2 anos. Faturo uns 25k/mês.</p><span class="text-gray-500 text-[9px] block text-right mt-1">23:48</span></div></div>
+            <div class="flex justify-start"><div class="bg-[#1a1a1a] border border-white/5 rounded-2xl rounded-tl-sm px-4 py-2.5 max-w-[80%]"><p class="text-gray-200 text-sm">Excelente perfil! Com 25k/mês, você tem boa base para escalar. Quer fazer um diagnóstico rápido? 👇</p><span class="text-gray-600 text-[9px] block mt-1">23:48 · <span class="text-purple-400/60">Clone A.I</span></span></div></div>
+            <div class="flex justify-start"><div class="bg-purple-600/30 border border-purple-500/30 rounded-xl px-4 py-2.5"><span class="text-purple-300 text-sm font-medium flex items-center gap-2"><span class="material-icons text-sm">assignment</span>Iniciar Diagnóstico →</span></div></div>
+          </div>`
+      },
+      mentor: {
+        scenario: 'Aluno inativo há 12 dias detectado',
+        agent: 'Agente: Mentor A.I',
+        result: 'Aluno reativado em 3 dias',
+        chat: `
+          <div class="space-y-3 max-w-lg">
+            <div class="flex justify-start"><div class="bg-[#1a1a1a] border border-white/5 rounded-2xl rounded-tl-sm px-4 py-2.5 max-w-[80%]"><p class="text-gray-200 text-sm">Oi Maria! Percebi que você parou no módulo 3 há 12 dias. Geralmente esse é o ponto em que bate a dúvida sobre posicionamento de nicho — é isso que aconteceu? 🤔</p><span class="text-gray-600 text-[9px] block mt-1">Dia 18 · <span class="text-purple-400/60">Mentor A.I</span></span></div></div>
+            <div class="flex justify-end"><div class="bg-purple-600/20 border border-purple-500/20 rounded-2xl rounded-tr-sm px-4 py-2.5 max-w-[75%]"><p class="text-white text-sm">Sim! Travei no exercício de definição de nicho. Não consigo avançar.</p><span class="text-gray-500 text-[9px] block text-right mt-1">10:15</span></div></div>
+            <div class="flex justify-start"><div class="bg-[#1a1a1a] border border-white/5 rounded-2xl rounded-tl-sm px-4 py-2.5 max-w-[80%]"><p class="text-gray-200 text-sm">Normal! Esse exercício pega mesmo. Vou te mandar um material complementar que o mentor gravou especificamente pra quem trava nessa parte. Também separei 2 exemplos de alunos que passaram pela mesma dúvida. 📎</p><span class="text-gray-600 text-[9px] block mt-1">10:15 · <span class="text-purple-400/60">Mentor A.I</span></span></div></div>
+            <div class="flex justify-end"><div class="bg-purple-600/20 border border-purple-500/20 rounded-2xl rounded-tr-sm px-4 py-2.5 max-w-[75%]"><p class="text-white text-sm">Perfeito! Vou assistir hoje. Obrigada! 🙏</p><span class="text-gray-500 text-[9px] block text-right mt-1">10:16</span></div></div>
+            <div class="flex justify-start"><div class="bg-[#1a1a1a] border border-white/5 rounded-2xl rounded-tl-sm px-4 py-2.5 max-w-[80%]"><p class="text-gray-200 text-sm">Show! Vou te mandar um lembrete amanhã pra gente ver se ficou mais claro. Pode contar comigo! 💪</p><span class="text-gray-600 text-[9px] block mt-1">10:16 · <span class="text-purple-400/60">Mentor A.I</span></span></div></div>
+          </div>`
+      },
+      comercial: {
+        scenario: 'Lead clica no anúncio às 10:15',
+        agent: 'Agente: Comercial A.I',
+        result: 'Reunião agendada em 6 min',
+        chat: `
+          <div class="space-y-3 max-w-lg">
+            <div class="flex justify-end"><div class="bg-purple-600/20 border border-purple-500/20 rounded-2xl rounded-tr-sm px-4 py-2.5 max-w-[75%]"><p class="text-white text-sm">Vi o anúncio sobre o programa de escala. Quanto custa?</p><span class="text-gray-500 text-[9px] block text-right mt-1">10:15</span></div></div>
+            <div class="flex justify-start"><div class="bg-[#1a1a1a] border border-white/5 rounded-2xl rounded-tl-sm px-4 py-2.5 max-w-[80%]"><p class="text-gray-200 text-sm">Ótimo interesse! Antes de falar sobre investimento, preciso entender seu cenário pra recomendar o plano certo. Me conta: qual o seu nicho e faturamento mensal atual?</p><span class="text-gray-600 text-[9px] block mt-1">10:15 · <span class="text-purple-400/60">Comercial A.I</span></span></div></div>
+            <div class="flex justify-end"><div class="bg-purple-600/20 border border-purple-500/20 rounded-2xl rounded-tr-sm px-4 py-2.5 max-w-[75%]"><p class="text-white text-sm">Consultoria de RH, faturo 40k/mês. Quero escalar pra 100k.</p><span class="text-gray-500 text-[9px] block text-right mt-1">10:17</span></div></div>
+            <div class="flex justify-start"><div class="bg-[#1a1a1a] border border-white/5 rounded-2xl rounded-tl-sm px-4 py-2.5 max-w-[80%]"><p class="text-gray-200 text-sm">Excelente perfil! Com 40k/mês em RH, o programa Professional seria o ideal — temos vários cases nesse nicho. Posso agendar uma reunião consultiva gratuita? O consultor vai mostrar exatamente o plano de escala. 📅</p><span class="text-gray-600 text-[9px] block mt-1">10:17 · <span class="text-purple-400/60">Comercial A.I</span></span></div></div>
+            <div class="flex justify-start"><div class="bg-purple-600/30 border border-purple-500/30 rounded-xl px-4 py-2.5"><span class="text-purple-300 text-sm font-medium flex items-center gap-2"><span class="material-icons text-sm">calendar_month</span>Agendar Reunião Gratuita →</span></div></div>
+          </div>`
+      }
+    };
+
+    function switchDemoTab(tab) {
+      const data = demoData[tab];
+      if (!data) return;
+
+      // Update tabs
+      document.querySelectorAll('.demo-tab').forEach(t => {
+        t.classList.remove('bg-purple-600', 'text-white', 'shadow-[0_0_15px_rgba(108,63,197,0.3)]');
+        t.classList.add('bg-white/5', 'text-gray-400');
+      });
+      const activeTab = document.querySelector(`.demo-tab[data-tab="${tab}"]`);
+      activeTab.classList.remove('bg-white/5', 'text-gray-400');
+      activeTab.classList.add('bg-purple-600', 'text-white', 'shadow-[0_0_15px_rgba(108,63,197,0.3)]');
+
+      // Fade out
+      const chatEl = document.getElementById('demoChat');
+      chatEl.style.opacity = '0';
+      chatEl.style.transform = 'translateY(10px)';
+
+      setTimeout(() => {
+        document.getElementById('demoScenario').textContent = data.scenario;
+        document.getElementById('demoAgent').textContent = data.agent;
+        document.getElementById('demoResult').textContent = data.result;
+        chatEl.innerHTML = data.chat;
+        // Fade in
+        chatEl.style.opacity = '1';
+        chatEl.style.transform = 'translateY(0)';
+      }, 300);
+    }
+  </script>
+
+</body>
+</html>

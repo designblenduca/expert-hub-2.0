@@ -5,7 +5,7 @@ import Links from "./app/Links.tsx";
 import "./styles/index.css";
 
 createRoot(document.getElementById("root")!).render(
-  <BrowserRouter>
+  <BrowserRouter basename={import.meta.env.BASE_URL}>
     <Routes>
       <Route path="/" element={<App />} />
       <Route path="/links" element={<Links />} />
