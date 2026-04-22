@@ -21,7 +21,7 @@ function figmaAssetPlaceholder(): Plugin {
 }
 
 export default defineConfig({
-  base: '/expert-hub-beta/',
+  base: '/expert-hub-2.0/',
   plugins: [
     figmaAssetPlaceholder(),
     // The React and Tailwind plugins are both required for Make, even if
